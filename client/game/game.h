@@ -159,7 +159,7 @@ public:
 	void DisableEnterExits(bool bDisable = true);
 
 	void SetMaxHealth(float fMax);
-
+	void SetBlurLevel(BYTE level);
 	CGame();
 	~CGame() {};
 };

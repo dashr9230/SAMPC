@@ -973,7 +973,20 @@ static cell n_SetPlayerMaxHealth(AMX* amx, cell* params)
 	}
 	return 0;
 }
-
+// native SetPlayerBlurLevel(playerid,level)
+static cell n_SetPlayerBlurLevel(AMX* amx,cell *params)
+{
+	CHECK_PARAMS(amx, "SetPlayerBlurLevel",2);
+	CPlayerPool* pPool = pNetGame->GetPlayerPool();
+	if (pPool && pPool->GetSlotState(params[1]))
+	{
+		RakNet::BitStream out;
+		out.Write<int>(6);
+		out.Write((unsigned char)params[2]);
+		pNetGame->SendToPlayer(params[1], RPC_ScrSetPlayer, &out);
+		return 1;
+	}
+}
 static cell n_InterpolateCameraPos(AMX* amx, cell* params)
 {
 	CHECK_PARAMS(amx, "InterpolateCameraPos", 9);
@@ -5679,6 +5692,7 @@ AMX_NATIVE_INFO custom_Natives[] =
 	DEFINE_NATIVE(SetPlayerArmedWeapon),
 	DEFINE_NATIVE(SetPlayerFightingStyle),
 	DEFINE_NATIVE(SetPlayerMaxHealth),
+	DEFINE_NATIVE(SetPlayerBlurLevel),
 	DEFINE_NATIVE(InterpolateCameraPos),
 	DEFINE_NATIVE(InterpolateCameraLookAt),
 

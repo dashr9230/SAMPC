@@ -885,3 +885,10 @@ void CGame::SetMaxHealth(float fMax)
 {
 	*(float*)0xB793E0 = fMax;
 }
+void CGame::SetBlurLevel(BYTE level)
+{
+	if(level==0 || level == 36)//0 = off, 36 = on
+	{
+		*(BYTE*)0x8D5104 = level;
+	}
+}
