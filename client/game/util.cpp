@@ -404,8 +404,8 @@ int __stdcall GameGetWeaponModelIDFromWeaponID(int iWeaponID)
 	case WEAPON_TEARGAS:
 		return WEAPON_MODEL_TEARGAS;
 
-	case WEAPON_MOLTOV:
-		return WEAPON_MODEL_MOLTOV;
+	case WEAPON_MOLOTOV:
+		return WEAPON_MODEL_MOLOTOV;
 
 	case WEAPON_COLT45:
 		return WEAPON_MODEL_COLT45;

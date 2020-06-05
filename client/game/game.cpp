@@ -618,7 +618,7 @@ const PCHAR CGame::GetWeaponName(int iWeaponID)
          return "Grenade"; 
       case WEAPON_TEARGAS: 
          return "Teargas";
-	  case WEAPON_MOLTOV: 
+	  case WEAPON_MOLOTOV: 
          return "Molotov";
       case WEAPON_COLT45: 
          return "Colt 45"; 
@@ -664,6 +664,10 @@ const PCHAR CGame::GetWeaponName(int iWeaponID)
          return "Fire Extinguisher"; 
       case WEAPON_CAMERA: 
          return "Camera"; 
+	  case WEAPON_NIGHT_VIS_GOGGLES:
+		 return "Night vision Goggles";
+	  case WEAPON_THERMAL_GOGGLES:
+		 return "Thermal Goggles";
       case WEAPON_PARACHUTE: 
          return "Parachute"; 
       case WEAPON_VEHICLE: 

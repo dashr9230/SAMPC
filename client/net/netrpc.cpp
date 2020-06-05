@@ -259,7 +259,7 @@ void Death(RPCParameters *rpcParams)
 			if (WeaponSlot->dwType != 0 &&
 				WeaponSlot->dwType != WEAPON_GRENADE &&
 				WeaponSlot->dwType != WEAPON_TEARGAS &&
-				WeaponSlot->dwType != WEAPON_MOLTOV)
+				WeaponSlot->dwType != WEAPON_MOLOTOV)
 			{
 				//DWORD hnd = 0;
 				//ScriptCommand(&create_pickup_with_ammo, pGame->GetWeaponModelIDFromWeapon(pRemotePed->m_pPed->WeaponSlots[i].dwType), 4, pRemotePed->m_pPed->WeaponSlots[i].dwAmmoInClip, matPlayer.pos.X + rand()%4, matPlayer.pos.Y + rand()%4, matPlayer.pos.Z, &hnd);	

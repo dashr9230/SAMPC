@@ -220,8 +220,8 @@ void CNetGame::Process()
 		pGame->RequestModel(WEAPON_MODEL_TEARGAS);
 	if (!pGame->IsModelLoaded(WEAPON_MODEL_GRENADE))
 		pGame->RequestModel(WEAPON_MODEL_GRENADE);
-	if (!pGame->IsModelLoaded(WEAPON_MODEL_MOLTOV))
-		pGame->RequestModel(WEAPON_MODEL_MOLTOV);
+	if (!pGame->IsModelLoaded(WEAPON_MODEL_MOLOTOV))
+		pGame->RequestModel(WEAPON_MODEL_MOLOTOV);
 
 	// cellphone
 	if (!pGame->IsModelLoaded(330)) pGame->RequestModel(330);

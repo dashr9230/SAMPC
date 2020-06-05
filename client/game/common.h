@@ -246,7 +246,7 @@ typedef struct {
 #define WEAPON_MODEL_CANE				326
 #define WEAPON_MODEL_GRENADE			342 // was 327
 #define WEAPON_MODEL_TEARGAS			343 // was 328
-#define WEAPON_MODEL_MOLTOV				344 // was 329
+#define WEAPON_MODEL_MOLOTOV			344 // was 329
 #define WEAPON_MODEL_COLT45				346
 #define WEAPON_MODEL_SILENCED			347
 #define WEAPON_MODEL_DEAGLE				348

@@ -1523,7 +1523,7 @@ const PCHAR CNetGame::GetWeaponName(int iWeaponID)
 		return "Grenade"; 
 	case WEAPON_TEARGAS: 
 		return "Teargas";
-	case WEAPON_MOLTOV:
+	case WEAPON_MOLOTOV:
 		return "Molotov Cocktail";
 	case WEAPON_COLT45: 
 		return "Colt 45"; 
