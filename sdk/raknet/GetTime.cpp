@@ -89,7 +89,7 @@ RakNet::Time64 RakNet::GetTime64(void)
 
 	Time64 curTime;
 	gettimeofday(&tp, 0);
-	curTime = =(tp.tv_sec) * (Time64) 1000000 + (tp.tv_usec));
+	curTime = ((tp.tv_sec) * (Time64) 1000000 + (tp.tv_usec));
 
 #if defined(GET_TIME_SPIKE_LIMIT) && GET_TIME_SPIKE_LIMIT>0
 	return NormalizeTime(curTime - initialTime);
