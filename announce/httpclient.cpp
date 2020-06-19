@@ -379,7 +379,7 @@ void CHttpClient::HandleEntity()
 
 	char szContentType[256];
 
-	if(GetHeaderValue("CONTENT-TYPE:",szContentType,256) == true) {
+	if(GetHeaderValue((char*)"CONTENT-TYPE:",szContentType,256) == true) {
 		if(strstr(szContentType,"text/html") != NULL) {
 			m_Response.content_type = CONTENT_TYPE_HTML;
 		}

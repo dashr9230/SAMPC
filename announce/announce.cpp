@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 	char szURL[255];
 	sprintf(szURL, "server.sa-mp.com/0.2.X/announce/%s",argv[1]);
 	
-	pHttpClient->ProcessURL(HTTP_GET, szURL, NULL, "Bonus");
+	pHttpClient->ProcessURL(HTTP_GET, szURL, NULL, (char*)"Bonus");
 
 	delete pHttpClient;
 

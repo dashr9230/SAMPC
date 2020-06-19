@@ -204,7 +204,7 @@ char * Util_itoa(int v, char *s, int r)
 
 //----------------------------------------------------
 
-char * Base64Encoding = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+const char * Base64Encoding = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 void Util_Base64Encode( char *cpInput, char *cpOutput )
 {
@@ -251,7 +251,7 @@ return;
 void K_EncodeString(char *szInput, char *szOutput)
 {
 	char b;
-
+#ifdef WIN32
 	while(*szInput) {
 		b = *szInput;
 		_asm mov bl, b
@@ -261,6 +261,7 @@ void K_EncodeString(char *szInput, char *szOutput)
 		szInput++;
 		szOutput++;
 	}
+#endif
 	*szOutput = 0;
 }
 
@@ -270,7 +271,7 @@ char * K_DecodeString(char *szInput)
 {
 	char b;
 	char *st = szInput;
-    
+#ifdef WIN32
 	while(*szInput) {
 		b = *szInput;
 		_asm mov bl, b
@@ -279,7 +280,7 @@ char * K_DecodeString(char *szInput)
 		*szInput = b;
 		szInput++;
 	}
-
+#endif
 	return st;
 }
 
