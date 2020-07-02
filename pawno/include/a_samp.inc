@@ -37,7 +37,7 @@
 #define MAX_CMD_INPUT 		(128)
 #define MAX_TEXT_DRAW_LINE	(256)
 #define MAX_FILTER_SCRIPTS 	(16)
-#defien MAP_MAP_ICON		(200)
+#define MAP_MAP_ICON		(200)
 
 
 #define DISCONNECT_REASON_LOST_CONNECTION	(0)
