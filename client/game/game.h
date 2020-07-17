@@ -155,6 +155,7 @@ public:
 	void SetWeaponSkill(unsigned char ucSkill, unsigned int uiLevel);
 	DWORD GetWeaponInfo(int iWeapon, int iUnk);
 	void DisableEnterExits(bool bDisable = true);
+	void DisableVehMapIcons(bool bDisable = true);
 
 	void SetMaxHealth(float fMax);
 	void SetBlurLevel(unsigned char ucLevel);

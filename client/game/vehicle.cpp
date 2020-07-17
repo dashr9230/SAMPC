@@ -525,6 +525,7 @@ DWORD CVehicle::GetHydraThrusters()
 void CVehicle::ProcessMarkers()
 {
 	if(!m_pVehicle) return;
+	if(!m_bDisableVehMapIcons) return;
 
 	if(m_byteObjectiveVehicle) {
 		// SHOW ALWAYS

@@ -97,6 +97,7 @@ void InitGame(RPCParameters *rpcParams)
 	bsInitGame.Read(bStuntBonus);
 	bsInitGame.Read(pNetGame->m_fNameTagDrawDistance);
 	bsInitGame.Read(pNetGame->m_bDisableEnterExits);
+	bsInitGame.Read(pNetGame->m_bDisableVehMapIcons);
 	bsInitGame.Read(pNetGame->m_bNameTagLOS);
 	bsInitGame.Read(sOnFootRate);
 	bsInitGame.Read(sInCarRate);
@@ -119,6 +120,7 @@ void InitGame(RPCParameters *rpcParams)
 
 	// Disable the enter/exits if needed.
 	pGame->DisableEnterExits(pNetGame->m_bDisableEnterExits);
+	pGame->DisableVehicleMapIcons(pNetGame->m_bDisableVehMapIcons);
 	
 	CLocalPlayer* pLocalPlayer = pPlayerPool->GetLocalPlayer();
 	pLocalPlayer->m_sNormalOnfootRate = sOnFootRate;

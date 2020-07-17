@@ -67,6 +67,7 @@ CNetGame::CNetGame()
 	m_fGlobalMarkerRadius = 10000.0f;
 	m_fNameTagDrawDistance = 70.0f;
 	m_bDisableEnterExits = false;
+	m_bDisableVehMapIcons = false;
 	m_uiMaxRconAttempt = 3;
 	m_bNameTagLOS = true;
 
@@ -407,6 +408,7 @@ void CNetGame::Init(bool bFirst = false)
 	m_fGlobalMarkerRadius = 10000.0f;
 	m_fNameTagDrawDistance = 70.0f;
 	m_bDisableEnterExits = false;
+	m_bDisableVehMapIcons = false;
 
 	if (bFirst) LoadAllFilterscripts();
 	// Has to be done here as it need to be AFTER the pools but BEFORE the gamemode
@@ -1298,6 +1300,7 @@ void CNetGame::InitGameForPlayer(BYTE bytePlayerID)
 	bsInitGame.Write(m_bStuntBonus);
 	bsInitGame.Write(m_fNameTagDrawDistance);
 	bsInitGame.Write(m_bDisableEnterExits);
+	bsInitGame.Write(m_bDisableVehMapIcons);
 	bsInitGame.Write(m_bNameTagLOS);
 	bsInitGame.Write(sOnfootRate);
 	bsInitGame.Write(sIncarRate);

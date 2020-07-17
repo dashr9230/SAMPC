@@ -1314,6 +1314,13 @@ void cmdDisableEnEx(PCHAR szCmd)
 
 //-----------------------------------------------------
 
+void cmdDisableVehMapIcon(PCHAR szCmd)
+{
+	pGame->DisableVehMapIcons();
+}
+
+//-----------------------------------------------------
+
 void cmdStartPiss(PCHAR szCmd)
 {
 	if(pNetGame) {
@@ -1470,6 +1477,7 @@ void SetupCommands()
 	pCmdWindow->AddCmdProc("sitidle",cmdTaskSitIdle);
 	pCmdWindow->AddCmdProc("bench",cmdBench);
 	pCmdWindow->AddCmdProc("disenex",cmdDisableEnEx);
+	pCmdWindow->AddCmdProc("disvehico", cmdDisableVehMapIcon);
 	pCmdWindow->AddCmdProc("dbgpiss",cmdStartPiss);
 
 	pCmdWindow->AddCmdProc("showmyvw",cmdShowMyVirtualWorld);

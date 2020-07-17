@@ -82,6 +82,7 @@ CNetGame::CNetGame(PCHAR szHostOrIp, int iPort,
 	m_byteHoldTime = 1;
 	m_bUseCJWalk = false;
 	m_bDisableEnterExits = false;
+	m_bDisableVehMapIcons = false;
 	m_fNameTagDrawDistance = 70.0f;
 	m_bNameTagLOS = true;
 	m_bAllowWeapons = true;
@@ -140,6 +141,7 @@ void CNetGame::ShutdownForGameModeRestart()
 	pGame->SetWantedLevel(0);
 	pGame->EnableClock(0);
 	m_bDisableEnterExits = false;
+	m_bDisableVehMapIcons = false;
 	m_fNameTagDrawDistance = 70.0f;
 
 	for (BYTE bytePlayerID = 0; bytePlayerID < MAX_PLAYERS; bytePlayerID++) {

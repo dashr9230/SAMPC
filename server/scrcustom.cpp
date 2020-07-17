@@ -6292,6 +6292,13 @@ static cell n_EnableStuntBonusForPlayer(AMX *amx, cell *params)
 
 //----------------------------------------------------------------------------------
 
+// native DisableVehicleMapIcons(enable)
+static cell n_DisableVehicleMapIcons(AMX *amx, cell *params)
+{
+	CHECK_PARAMS(amx, "DisableVehicleMapIcons", 0);
+	pNetGame->m_bDisableVehMapIcons = true;
+}
+
 // native DisableInteriorEnterExits()
 static cell n_DisableInteriorEnterExits(AMX *amx, cell *params)
 {
@@ -6540,6 +6547,7 @@ AMX_NATIVE_INFO custom_Natives[] =
 	{ "SetDisabledWeapons",		n_SetDisabledWeapons },
 	{ "UsePlayerPedAnims",		n_UsePlayerPedAnims },
 	{ "DisableInteriorEnterExits", n_DisableInteriorEnterExits },
+	{ "DisableVehicleMapIcons",		n_DisableVehicleMapIcons },
 	{ "SetNameTagDrawDistance", n_SetNameTagDrawDistance },
 	DEFINE_NATIVE(DisableNameTagLOS),
 	DEFINE_NATIVE(SetPlayerBlurLevel),

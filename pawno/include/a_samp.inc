@@ -386,6 +386,7 @@ native EnableZoneNames(enable);
 native SetDisabledWeapons(...);
 native UsePlayerPedAnims();
 native DisableInteriorEnterExits();
+native DisableVehicleMapIcons();
 native SetNameTagDrawDistance(Float:distance);
 native LimitGlobalChatRadius(Float:radius);
 native LimitPlayerMarkerRadius(Float:marker_radius);

@@ -107,6 +107,7 @@ enum eRPCTable
 	RPC_ScrClearAnimations,
 	RPC_ScrSetSpecialAction,
 	RPC_ScrEnableStuntBonus,
+	RPC_ScrEnableVehMapIcon,
 	RPC_ScrSetVehicle,
 	RPC_ScrSetPlayer,
 	RPC_ScrVehicleVelocity,

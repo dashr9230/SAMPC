@@ -803,6 +803,11 @@ void CGame::SetDrunkLevel(float fLevel)
 }
 //-----------------------------------------------------------
 
+void CGame::DisableVehMapIcons(bool bDisable)
+{
+	m_bDisableVehMapIcons = bDisable;
+}
+
 void CGame::DisableEnterExits(bool bDisable)
 {
 	DWORD pEnExPool = *(DWORD *)0x96A7D8;
