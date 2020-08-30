@@ -16,7 +16,7 @@ native DestroyObject(objectid);
 native MoveObject(objectid, Float:x, Float:y, Float:z, Float:speed);
 native StopObject(objectid);
 native IsObjectMoving(objectid);
-native SetObjectScale(playerid, Float:scale);
+native SetObjectScale(objectid, Float:scale);
 
 native CreatePlayerObject(playerid, modelid, Float:x, Float:y, Float:z, Float:rx, Float:ry, Float:rz);
 native SetPlayerObjectPos(playerid, playerobjectid, Float:x, Float:y, Float:z);
