@@ -376,8 +376,6 @@ void CChatWindow::ChatLog(PCHAR szString, PCHAR szNick, eChatMessageType eType)
 	char tBuffer[64];
 	snprintf(tBuffer, sizeof(tBuffer),
 		"[%02d:%02d:%02d]", time.wHour, time.wMinute, time.wSecond);
-		
-	//strlen(szString);
 	
 	if(eType == CHAT_TYPE_CHAT)
 	{
