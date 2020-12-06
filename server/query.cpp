@@ -10,7 +10,6 @@
 #include "main.h"
 
 bool bRconSocketReply = false;
-bool g_bQueryLogging = false;
 
 void RconSocketReply(char* szMessage)
 {
@@ -25,7 +24,7 @@ int ProcessQueryPacket(unsigned int binaryAddress, unsigned short port, char* da
 	if (length >= 11 && *(unsigned int*)data == 0x504D4153) {
 
 		// Tell the user someone sent a request, if "logqueries" enabled
-		if (g_bQueryLogging) {
+		if (pConsole->GetBoolVariable("logqueries")) {
 			in_addr in;
 			in.s_addr = binaryAddress;
 			logprintf("[query:%c] from %s:%d", data[10], inet_ntoa(in), port);
