@@ -295,6 +295,7 @@ int main (int argc, char** argv)
 	//bool bGameMod = false;
 	//bool bEnableAC = false;
 	bool bAllowQuery = true;
+	bool bQueryLogging = false;
 	int iMTUSize = MAXIMUM_MTU_SIZE;
 	int iChatLogging = 1;
 	int iPlayerTimeout = 10000;
@@ -364,6 +365,7 @@ int main (int argc, char** argv)
 
 	pConsole->AddVariable("lanmode",CON_VARTYPE_BOOL,0, &bLanModeEnable);
 	pConsole->AddVariable("query",CON_VARTYPE_BOOL, 0, &bAllowQuery);
+	pConsole->AddVariable("logqueries",CON_VARTYPE_BOOL, 0, &bQueryLogging);
 
 /*#ifdef RAKRCON
 	pConsole->AddVariable("rcon_port", CON_VARTYPE_INT, 0, &iRconPort);
