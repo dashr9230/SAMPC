@@ -44,6 +44,7 @@ CAudioStream			*pAudioStream=NULL;
 
 bool					bShowDebugLabels = false;
 bool					bWantHudScaling = true;
+bool 					bHeadMove = true;
 
 CGame					*pGame=0;
 //DWORD					dwGameLoop=0;
