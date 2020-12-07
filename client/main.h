@@ -114,6 +114,7 @@ extern GAME_SETTINGS tSettings;
 extern IDirect3DDevice9* pD3DDevice;
 extern bool bShowDebugLabels;
 extern bool bWantHudScaling;
+extern bool bHeadMove;
 extern int iGtaVersion;
 
 #include "outputdebugstring.h"
