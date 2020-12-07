@@ -283,7 +283,7 @@ bool CLocalPlayer::Process()
 			UpdateSurfing();
 
 			// MAKE MY HEAD MOVE WITH THE CAMERA
-			if((dwThisTick - m_dwLastHeadUpdate) > 1000) {
+			if((dwThisTick - m_dwLastHeadUpdate) > 1000 && bHeadMove) {
                 VECTOR LookAt;
 				CAMERA_AIM *Aim = GameGetInternalAim();
 				LookAt.X = Aim->pos1x + (Aim->f1x * 20.0f);
