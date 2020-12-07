@@ -1457,6 +1457,15 @@ static void cmdHudScaleFix(PCHAR szCmd)
 	bWantHudScaling = !bWantHudScaling;
 }
 
+static void cmdHeadMove(PCHAR szCmd)
+{
+	(void)szCmd;
+	
+	bHeadMove = !bHeadMove;
+	
+	pChatWindow->AddInfoMessage(bHeadMove ? "-> Head movements enabled" : "-> Head movements disabled");
+}
+
 void SetupCommands()
 {
 	// RELEASE COMMANDS
@@ -1471,6 +1480,7 @@ void SetupCommands()
 	pCmdWindow->AddCmdProc("pagesize", cmdSetChatPageSize);
 	pCmdWindow->AddCmdProc("timestamp", cmdToggleChatTimeStamp);
 	pCmdWindow->AddCmdProc("hudscalefix", cmdHudScaleFix);
+	pCmdWindow->AddCmdProc("headmove", cmdHeadMove);
 
 	pCmdWindow->AddCmdProc("disvehico", cmdDisableVehMapIcon);
 
