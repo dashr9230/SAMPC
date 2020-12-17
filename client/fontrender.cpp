@@ -35,6 +35,7 @@ CFontRender::~CFontRender()
 }
 
 // Font size multiplier ranges: -3 to 5
+signed int uiFontSize = 0;
 int GetFontSize()
 {
 	int n, w = pGame->GetScreenWidth();
@@ -48,7 +49,7 @@ int GetFontSize()
 	else
 		n = 14;
 
-	return n + 2 * 0; // TODO: 0 should be replace with pConfig->GetInt("fontsize");
+	return n + 2 * uiFontSize; // TODO: 0 should be replace with pConfig->GetInt("fontsize");
 }
 
 int GetFontWeight()
