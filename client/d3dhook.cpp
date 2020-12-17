@@ -245,7 +245,7 @@ HRESULT __stdcall IDirect3DDevice9Hook::Present(CONST RECT* pSourceRect, CONST R
 								color = 0xFFD4358B;
 							}                              
 
-							pLabel->Draw(&vPlayerPos, label, color);
+							pLabel->Draw(&vPlayerPos, label, color, true, false);
 						}
 					}
 				}
