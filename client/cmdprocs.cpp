@@ -1465,6 +1465,19 @@ void cmdDebugLabels(PCHAR szCmd)
 	bShowDebugLabels = !bShowDebugLabels;
 }
 
+static void cmdSetChatFontSize(PCHAR szCmd)
+{
+	signed int uiFont = atoi(szCmd);
+
+	if (uiFont >= -3 && uiFont <= 5)
+	{
+		uiFontSize = uiFont;
+		pDefaultFont->CreateFonts();
+	}
+	else
+		pChatWindow->AddDebugMessage("Valid fontsize: -3 to 5");
+}
+
 void SetupCommands()
 {
 	// RELEASE COMMANDS
@@ -1477,6 +1490,7 @@ void SetupCommands()
 	pCmdWindow->AddCmdProc("mem", cmdShowMem);
 
 	pCmdWindow->AddCmdProc("pagesize", cmdSetChatPageSize);
+	pCmdWindow->AddCmdProc("fontsize", cmdSetChatFontSize);
 	pCmdWindow->AddCmdProc("timestamp", cmdToggleChatTimeStamp);
 	pCmdWindow->AddCmdProc("hudscalefix", cmdHudScaleFix);
 	pCmdWindow->AddCmdProc("headmove", cmdHeadMove);
