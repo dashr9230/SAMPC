@@ -44,3 +44,4 @@ private:
 	long m_lSmallerFontSizeY;
 
 };
+extern signed int uiFontSize;
