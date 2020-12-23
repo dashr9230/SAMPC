@@ -89,6 +89,7 @@ typedef struct _GAME_SETTINGS {
 #include "d3dhook.h"
 #include "cursor.h"
 #include "audiostream.h"
+#include "licenseplate.h"
 
 void QuitGame();
 
