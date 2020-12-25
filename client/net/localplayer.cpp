@@ -465,6 +465,10 @@ void CLocalPlayer::ApplySpecialAction(BYTE byteSpecialAction)
 {
 	switch(byteSpecialAction) {
 
+		case SPECIAL_ACTION_NONE:
+			m_pPlayerPed->StopSpecialAction();
+			break;
+
 		case SPECIAL_ACTION_USEJETPACK:
 			if(!m_pPlayerPed->IsInJetpackMode()) m_pPlayerPed->StartJetpack();
 			break;
@@ -499,6 +503,10 @@ void CLocalPlayer::ApplySpecialAction(BYTE byteSpecialAction)
 			if(m_pPlayerPed->IsCellphoneEnabled()) {
 				m_pPlayerPed->ToggleCellphone(0);
 			}
+			break;
+
+		case SPECIAL_ACTION_DRINK_BEER:
+			m_pPlayerPed->StartBeer();
 			break;
 
 		case SPECIAL_ACTION_URINATE:
@@ -546,6 +554,10 @@ BYTE CLocalPlayer::GetSpecialAction()
 
 	if(m_pPlayerPed->IsCellphoneEnabled()) {
 		return SPECIAL_ACTION_USECELLPHONE;
+	}
+
+	if(m_pPlayerPed->IsBeer()) {
+		return SPECIAL_ACTION_DRINK_BEER;
 	}
 
 	if(m_pPlayerPed->IsPissing()) {

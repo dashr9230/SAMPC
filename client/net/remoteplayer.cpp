@@ -414,9 +414,14 @@ void CRemotePlayer::ProcessSpecialActions(BYTE byteSpecialAction)
 		m_ofSync.byteSpecialAction = SPECIAL_ACTION_NONE;
 	}
 
+	if( byteSpecialAction == SPECIAL_ACTION_NONE)
+	{	
+		m_pPlayerPed->StopSpecialAction();
+	}
+
 	// headsync:always
 	if(GetState() == PLAYER_STATE_ONFOOT && m_pPlayerPed->IsAdded()) {
-		if((GetTickCount() - m_dwLastHeadUpdate) > 500) {
+		if((GetTickCount() - m_dwLastHeadUpdate) > 500 && bHeadMove) {
             VECTOR LookAt;
 			CAMERA_AIM *Aim = GameGetRemotePlayerAim(m_pPlayerPed->m_bytePlayerNumber);
             LookAt.X = Aim->pos1x + (Aim->f1x * 20.0f);

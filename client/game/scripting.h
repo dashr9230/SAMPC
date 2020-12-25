@@ -93,6 +93,7 @@ const SCRIPT_COMMAND text_1number_styled				= { 0x01E3, "siii" };	// TEXT, numbe
 const SCRIPT_COMMAND toggle_car_siren					= { 0x0397, "vi" };		// var_car, siren(1/0)
 const SCRIPT_COMMAND toggle_widescreen					= { 0x02A3, "i" };		// widescreen(1/0)
 const SCRIPT_COMMAND set_camera_behind_player			= { 0x0373, "" };		// -/-
+const SCRIPT_COMMAND set_camera_drunk                   = { 0x052C, "ii" };     // PLAYER_CHAR, integer
 const SCRIPT_COMMAND camera_on_player					= { 0x0157, "vii" };	// var_player, ukn, ukn
 const SCRIPT_COMMAND camera_on_vehicle					= { 0x0158, "iii" };	// var_car, ukn, ukn
 const SCRIPT_COMMAND camera_on_actor					= { 0x0159, "iii" };	// var_actor, ukn, ukn

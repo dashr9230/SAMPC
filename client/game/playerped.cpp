@@ -55,6 +55,8 @@ CPlayerPed::CPlayerPed()
 
 	m_iPissingState = 0;
 	m_dwPissParticlesHandle = 0;
+	
+	m_iBeerState = 0;
 }
 
 //-----------------------------------------------------------
@@ -99,6 +101,8 @@ CPlayerPed::CPlayerPed(int iPlayerNumber, int iSkin, float fX, float fY,float fZ
 
 	m_iPissingState = 0;
 	m_dwPissParticlesHandle = 0;
+
+	m_iBeerState = 0;
 
 	SetModelIndex(iSkin);
 	SetTargetRotation(fRotation);
@@ -1451,6 +1455,7 @@ void CPlayerPed::ApplyAnimation( char *szAnimName, char *szAnimFile, float fT,
 	if(!m_pPed) return;
 	if(!GamePool_Ped_GetAt(m_dwGTAId)) return;
 	if(IsPissing()) StopPissing();
+	if(IsBeer()) StopBeer();
     
 #ifdef _DEBUG
 	//if(pChatWindow) pChatWindow->AddDebugMessage("Anim(%s,%s,%f,%d,%d,%d,%d,%d)",
@@ -2010,6 +2015,48 @@ int CPlayerPed::IsPissing()
 }
 
 //-----------------------------------------------------------
+
+void CPlayerPed::StartBeer()
+{
+	if(!m_pPed) return;
+	if(!GamePool_Ped_GetAt(m_dwGTAId)) return;
+
+	ScriptCommand(&set_camera_drunk,0,100);
+	m_iBeerState = 1;
+}
+
+void CPlayerPed::StopBeer()
+{
+	if(!m_pPed) return;
+	if(!GamePool_Ped_GetAt(m_dwGTAId)) return;
+	
+	ScriptCommand(&set_camera_drunk,0,0);
+	m_iBeerState = 0;
+}
+
+int CPlayerPed::IsBeer()
+{
+	return m_iBeerState;
+}
+
+void CPlayerPed::StopSpecialAction()
+{
+	if(IsInJetpackMode()) StopJetpack();
+
+	if(IsDancing()) StopDancing();
+
+	if(HasHandsUp()) {
+		MATRIX4X4 mat;
+		GetMatrix(&mat);
+		TeleportTo(mat.pos.X,mat.pos.Y,mat.pos.Z);
+	}
+
+	if(IsCellphoneEnabled()) ToggleCellphone(0);
+
+	if(IsBeer()) StopBeer();
+
+	if(IsPissing()) StopPissing();
+}
 
 void CPlayerPed::ProcessVehicleHorn()
 {

@@ -160,6 +160,12 @@ public:
     void		StopPissing();
 	int			IsPissing();
 
+	void 		StartBeer();
+	void        StopBeer();
+	int			IsBeer();
+
+	void 		StopSpecialAction();
+
 	void		ProcessMarkers(bool bMarkerStreamingEnabled, float fMarkerStreamRadius, bool bVisible);
 
 	void		ApplyCommandTask(char *szTaskName, int p1, int p2, int p3, 
@@ -198,6 +204,8 @@ public:
 
 	int			m_iPissingState;
 	DWORD		m_dwPissParticlesHandle;
+
+	int 		m_iBeerState;
 
 	DWORD 		m_dwArrow;
 	BYTE		m_byteCreateMarker;
