@@ -7,7 +7,7 @@ public:
 	CConfig();
 	~CConfig() {};
 
-	void SetValue(char *szName, char *szValue);
+	void SetString(char *szName, char *szValue);
 	void SetInt(char* szName, int iValue);
 	char* GetString(char *szName);
 	int GetInt(char *szName);
