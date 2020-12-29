@@ -53,7 +53,10 @@ CChatWindow::~CChatWindow() {}
 
 void CChatWindow::SetPageSize()
 {
-	m_uiPageSize = pConfig->GetInt("pagesize");
+	if (pConfig->GetInt("pagesize") == NULL)
+		m_uiPageSize = 10;
+	else 
+		m_uiPageSize = pConfig->GetInt("pagesize");
 }
 
 void CChatWindow::ForceHide(bool bHide)
