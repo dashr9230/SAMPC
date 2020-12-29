@@ -21,7 +21,6 @@ CChatWindow::CChatWindow(IDirect3DDevice9 *pD3DDevice, CFontRender* pFontRender)
 	m_iEnabled			= CHAT_WINDOW_MODE_FULL;
 	m_iCurrentPage		= 1;
 	m_uiPageSize		= DISP_MESSAGES;
-	m_bTimeStamp = false;
 	m_bForcedHidden = false;
 
 	// Create a sprite to use when drawing text
@@ -52,14 +51,9 @@ CChatWindow::~CChatWindow() {}
 
 //----------------------------------------------------
 
-void CChatWindow::SetPageSize(unsigned int uiSize)
+void CChatWindow::SetPageSize()
 {
-	m_uiPageSize = uiSize;
-}
-
-void CChatWindow::ToggleTimeStamp()
-{
-	m_bTimeStamp = !m_bTimeStamp;
+	m_uiPageSize = pConfig->GetInt("pagesize");
 }
 
 void CChatWindow::ForceHide(bool bHide)
@@ -180,7 +174,7 @@ void CChatWindow::Draw()
 
 		while(x!= m_uiPageSize) {
 
-			if (m_bTimeStamp)
+			if (pConfig->GetInt("timestamp"))
 			{
 				m_pFontRender->GetDXFont()->DrawText(0, m_ChatWindowEntries[iMessageAt].szTimeStamp, -1, &rectSize, DT_CALCRECT | DT_LEFT, 0xFF000000);
 				RenderText(m_ChatWindowEntries[iMessageAt].szTimeStamp, rect, m_ChatWindowEntries[iMessageAt].dwTextColor);
@@ -196,7 +190,7 @@ void CChatWindow::Draw()
 				if(i) {
 					m_pFontRender->GetDXFont()->DrawText(0,m_ChatWindowEntries[iMessageAt].szNick,-1,&rectSize,DT_CALCRECT|DT_LEFT,0xFF000000);
 					RenderText(m_ChatWindowEntries[iMessageAt].szNick,rect,m_ChatWindowEntries[iMessageAt].dwNickColor);
-					rect.left = (m_bTimeStamp) ? (rect.left + (rectSize.right - rectSize.left)) : (35 + (rectSize.right - rectSize.left));
+					rect.left = (pConfig->GetInt("timestamp")) ? (rect.left + (rectSize.right - rectSize.left)) : (35 + (rectSize.right - rectSize.left));
 					//rect.left = (m_bTimeStamp) ? rect.left + size.cx : 35 + size.cy;
 				}
 

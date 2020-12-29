@@ -214,6 +214,7 @@
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</BrowseInformation>
     </ClCompile>
     <ClCompile Include="colorembed.cpp" />
+	<ClCompile Include="config.cpp" />
     <ClCompile Include="cursor.cpp" />
     <ClCompile Include="d3dhook.cpp" />
     <ClCompile Include="deathwindow.cpp" />
@@ -593,6 +594,7 @@
     <ClInclude Include="cmdprocs.h" />
     <ClInclude Include="cmdwindow.h" />
     <ClInclude Include="colorembed.h" />
+	<ClInclude Include="config.h" />
     <ClInclude Include="cursor.h" />
     <ClInclude Include="d3dhook.h" />
     <ClInclude Include="deathwindow.h" />

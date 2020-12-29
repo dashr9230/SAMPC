@@ -1416,9 +1416,10 @@ static void cmdTeamTest(PCHAR szCmd)
 static void cmdSetChatPageSize(PCHAR szCmd)
 {
 	unsigned int uiSize = (unsigned int)atoi(szCmd);
-	if (1 <= uiSize && uiSize <= 30)
-		pChatWindow->SetPageSize(uiSize);
-	else
+	if (1 <= uiSize && uiSize <= 30) {
+		pConfig->SetInt("pagesize", uiSize);
+		pChatWindow->SetPageSize();
+	} else
 		pChatWindow->AddInfoMessage("Usage: /pagesize [1-30]");
 }
 
@@ -1426,8 +1427,8 @@ static void cmdToggleChatTimeStamp(PCHAR szCmd)
 {
 	(void)szCmd;
 
-	if (pChatWindow)
-		pChatWindow->ToggleTimeStamp();
+	bTimeStamp = !bTimeStamp;
+	pConfig->SetInt("timestamp", bTimeStamp);
 }
 
 void cmdDisableVehMapIcon(PCHAR szCmd)
@@ -1442,20 +1443,22 @@ static void cmdShowMem(PCHAR szCmd)
 	pChatWindow->AddDebugMessage("Memory: %u", *(DWORD*)0x8A5A80);
 }
 
-// TODO: Add "nohudscalefix" config store here
 static void cmdHudScaleFix(PCHAR szCmd)
 {
 	(void)szCmd;
 
 	bWantHudScaling = !bWantHudScaling;
+	pConfig->SetInt("nohudscalefix", bWantHudScaling);
 }
 
-// TODO: Add "disableheadmove" config save here
 static void cmdHeadMove(PCHAR szCmd)
 {
 	(void)szCmd;
 
 	bHeadMove = !bHeadMove;
+	
+	if (!bHeadMove) pConfig->SetInt("disableheadmove", 1);
+	else if (bHeadMove) pConfig->SetInt("disableheadmove", 0);
 
 	pChatWindow->AddInfoMessage(bHeadMove ? "-> Head movements enabled" : "-> Head movements disabled");
 }

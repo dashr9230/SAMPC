@@ -41,10 +41,12 @@ CNetStats				*pNetStats=NULL;
 //CSvrNetStats			*pSvrNetStats=NULL;
 //CHelpDialog				*pHelpDialog=NULL;
 CAudioStream			*pAudioStream=NULL;
+CConfig					*pConfig=NULL;
 
 bool					bShowDebugLabels = false;
 bool					bWantHudScaling = true;
 bool 					bHeadMove = true;
+bool 					bTimeStamp = false;
 
 CGame					*pGame=0;
 //DWORD					dwGameLoop=0;
@@ -294,9 +296,14 @@ void DoInitStuff()
 		OutputDebugString("Font and chat window creating..");
 
 		// Create instances of the chat and input classes.
+		pConfig = new CConfig;
 		pDefaultFont = new CFontRender(pD3DDevice);
 		pChatWindow = new CChatWindow(pD3DDevice,pDefaultFont);
 		pCmdWindow = new CCmdWindow(pD3DDevice);
+
+		bHeadMove = pConfig->GetInt("disableheadmove");
+		bTimeStamp = pConfig->GetInt("timestamp");
+		pChatWindow->SetPageSize();
 
 		AllocateBufferForColorEmbed();
 
