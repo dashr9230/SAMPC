@@ -7,7 +7,7 @@ CConfig::CConfig()
 	sprintf_s(Path, 260, "%s\\samp.cfg", Directory);
 }
 
-void CConfig::SetValue(char* szName, char* szValue)
+void CConfig::SetString(char* szName, char* szValue)
 {
 	WritePrivateProfileString("SA-MP", szName, szValue, Path);
 }
