@@ -161,6 +161,8 @@ public:
 	bool IsInRCMode() { return m_bInRCMode; };
 
 	int DetermineNumberOfPlayersInLocalRange();
+	
+	void SendFPS();
 };
 
 //----------------------------------------------------------

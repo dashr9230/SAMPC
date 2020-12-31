@@ -93,6 +93,7 @@ public:
 	bool m_bDisableVehMapIcons;
 	unsigned int m_uiMaxRconAttempt;
 	bool m_bManualEngineAndLights;
+	float m_fFPS;
 
 	RakNet::Time32 m_iInitialTime;
 

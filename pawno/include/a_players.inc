@@ -216,6 +216,7 @@ native SetPlayerShopName(playerid, shopname[]);
 native PlayAudioStreamForPlayer(playerid, url[], Float:posX = 0.0, Float:posY = 0.0, Float:posZ = 0.0, Float:distance = 50.0, usepos = 0);
 native StopAudioStreamForPlayer(playerid);
 native PlayCrimeReportForPlayer(playerid, suspectid, crime);
+native GetPlayerFPS(playerid);
 
 native SetPVarInt(playerid, varname[], int_value);
 native SetPVarString(playerid, varname[], string_value[]);

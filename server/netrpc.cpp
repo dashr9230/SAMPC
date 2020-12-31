@@ -878,6 +878,13 @@ static void VehicleDamage(RPCParameters* rpcParams)
 	}
 }
 
+static void FPS(RPCParameters* rpcParams)
+{
+	RakNet::BitStream bsData(rpcParams);
+	
+	bsData.Read(pNetGame->m_fFPS);
+}
+
 //----------------------------------------------------
 
 void RegisterRPCs(RakServerInterface * pRakServer)
@@ -906,6 +913,7 @@ void RegisterRPCs(RakServerInterface * pRakServer)
 	REGISTER_STATIC_RPC(pRakServer, TypingEvent);
 	REGISTER_STATIC_RPC(pRakServer, ClientCheck);
 	REGISTER_STATIC_RPC(pRakServer, VehicleDamage);
+	REGISTER_STATIC_RPC(pRakServer, FPS);
 }
 
 //----------------------------------------------------

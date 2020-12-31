@@ -43,6 +43,7 @@ CNetGame::CNetGame()
 	m_fGravity		= 0.008f;
 	m_iDeathDropMoney = 0;
 	m_bZoneNames = false;
+	m_fFPS = 0.0f;
 	
 	m_longSynchedWeapons = DEFAULT_WEAPONS;
 	// Change number here and in ShutdownForGameModeRestart for default weapon sets
@@ -462,6 +463,7 @@ void CNetGame::ShutdownForGameModeRestart()
 	m_fGravity		= 0.008f;
 	m_iDeathDropMoney = 0;
 	m_bZoneNames = false;
+	m_fFPS = 0.0f;
 	m_longSynchedWeapons = DEFAULT_WEAPONS;
 
 #ifdef _DEBUG

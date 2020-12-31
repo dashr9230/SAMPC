@@ -3135,6 +3135,17 @@ static cell n_PlayCrimeReportForPlayer(AMX* amx, cell* params)
 	return 0;
 }
 
+// native GetPlayerFPS(playerid)
+static cell n_GetPlayerFPS(AMX* amx, cell* params)
+{
+	CHECK_PARAMS(amx, "GetPlayerFPS", 1);
+	
+	if (pNetGame->GetPlayerPool() &&
+		pNetGame->GetPlayerPool()->GetSlotState(params[1]))
+		return (int)pNetGame->m_fFPS;
+	
+	return 0;
+}
 // native SetPVarInt(playerid, varname[], int_value)
 static cell n_SetPVarInt(AMX* amx, cell* params)
 {
@@ -7259,6 +7270,7 @@ AMX_NATIVE_INFO custom_Natives[] =
 	DEFINE_NATIVE(PlayAudioStreamForPlayer),
 	DEFINE_NATIVE(StopAudioStreamForPlayer),
 	DEFINE_NATIVE(PlayCrimeReportForPlayer),
+	{ "GetPlayerFPS", n_GetPlayerFPS },
 
 	// Player Variable
 	DEFINE_NATIVE(SetPVarInt),

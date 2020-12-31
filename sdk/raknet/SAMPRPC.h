@@ -56,6 +56,7 @@ enum
 	RPC_TypingEvent,
 	RPC_ClientCheck,
 	RPC_Click,
+	RPC_FPS,
 
 	RPC_ScrSetSpawnInfo = 100,
 	RPC_ScrSetPlayerTeam,

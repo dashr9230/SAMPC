@@ -134,6 +134,8 @@ bool CLocalPlayer::Process()
 			FORCE_EXIT(0x3);
 		}*/
 		
+		SendFPS();
+		
 		// HANDLE I'M A DEAD LOCAL PLAYER PED
 		if (!m_bIsWasted && m_pPlayerPed->GetActionTrigger() == ACTION_DEATH || m_pPlayerPed->IsDead()) {
 			// DEAD
@@ -1594,3 +1596,12 @@ void CLocalPlayer::SendVehicleDamageStatus(VEHICLEID VehicleID)
 }
 
 //-----------------------------------------------------------
+
+void CLocalPlayer::SendFPS()
+{
+	RakNet::BitStream bsSend;
+
+	bsSend.Write(pGame->GetFPS());
+
+	pNetGame->Send(RPC_FPS, &bsSend);
+}
