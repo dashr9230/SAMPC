@@ -325,6 +325,7 @@
     </ClCompile>
     <ClCompile Include="audiostream.cpp" />
     <ClCompile Include="colorembed.cpp" />
+	<ClCompile Include="config.cpp" />
     <ClCompile Include="licenseplate.cpp" />
     <ClCompile Include="game\txdstuff.cpp">
       <Filter>game</Filter>
@@ -740,6 +741,7 @@
     </ClInclude>
     <ClInclude Include="audiostream.h" />
     <ClInclude Include="colorembed.h" />
+	<ClInclude Include="config.h" />
     <ClInclude Include="licenseplate.h" />
     <ClInclude Include="game\txdstuff.h">
       <Filter>game</Filter>

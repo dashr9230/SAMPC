@@ -1283,7 +1283,7 @@ static BYTE byteCameraMode;
 
 static void UpdateForHudOrCrossHairScale()
 {
-	if (bWantHudScaling)
+	if (pConfig->GetInt("nohudscalefix"))
 	{
 		fScreenWidthScaleSaved = *(float*)0x859520;
 		fScreenHeightScaleSaved = *(float*)0x859524;

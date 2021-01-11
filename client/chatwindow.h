@@ -42,7 +42,6 @@ class CChatWindow
 {
 private:
 	unsigned int	m_uiPageSize;
-	bool m_bTimeStamp;
 	int					m_iEnabled;
 	int					m_iCurrentPage;
 	CHAT_WINDOW_ENTRY	m_ChatWindowEntries[MAX_MESSAGES];
@@ -94,8 +93,7 @@ public:
 	ID3DXSprite			*m_pChatTextSprite;
 	IDirect3DDevice9	*m_pD3DDevice;
 
-	void SetPageSize(unsigned int uiSize);
-	void ToggleTimeStamp();
+	void SetPageSize();
 	void ForceHide(bool bHide);
 };
 

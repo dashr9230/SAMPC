@@ -46,9 +46,9 @@ void CAudioStream::InitBass()
 	BASS_SetConfig(BASS_CONFIG_NET_PLAYLIST, 1);
 	BASS_SetConfig(BASS_CONFIG_NET_TIMEOUT, 10000);
 
-	// TODO: Add "audioproxyoff" config check for this
-	BASS_SetConfigPtr(BASS_CONFIG_NET_PROXY, NULL);
-
+	if (pConfig->GetInt("audioproxyoff"))
+		BASS_SetConfigPtr(BASS_CONFIG_NET_PROXY, NULL);
+	
 	BASS_SetEAXParameters(-1, 0.0f, -1.0f, -1.0f);
 
 	m_Flags.bInited = true;
@@ -84,9 +84,9 @@ void CAudioStream::Play(char* szURL,
 
 	BASS_ChannelPlay(m_hStream, FALSE);
 
-	// TODO: Add "audiomsgoff" config check for this
-	if (pChatWindow)
-		pChatWindow->AddInfoMessage("Audio stream: %.30s", szURL);
+	if (!pConfig->GetInt("audiomsgoff"))
+		if (pChatWindow)
+			pChatWindow->AddInfoMessage("Audio stream: %.30s", szURL);
 
 	m_Flags.bPlaying = true;
 }

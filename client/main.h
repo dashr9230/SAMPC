@@ -73,6 +73,7 @@ typedef struct _GAME_SETTINGS {
 
 #include "runutil.h"
 #include "colorembed.h"
+#include "config.h"
 #include "licenseplate.h"
 #include "filehooks.h"
 #include "fontrender.h"
@@ -113,6 +114,7 @@ extern CNetStats* pNetStats;
 extern CFileSystem* pFileSystem;
 extern CCursor* pCursor;
 extern CAudioStream* pAudioStream;
+extern CConfig* pConfig;
 
 extern CDXUTDialogResourceManager* pDialogResourceManager;
 extern CDXUTDialog* pGameUI;
@@ -122,6 +124,7 @@ extern IDirect3DDevice9* pD3DDevice;
 extern bool bShowDebugLabels;
 extern bool bWantHudScaling;
 extern bool bHeadMove;
+extern bool bTimeStamp;
 extern int iGtaVersion;
 extern char szUserDocPath[MAX_PATH];
 

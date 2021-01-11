@@ -89,8 +89,8 @@ void cmdSetFrameLimit(PCHAR szCmd)
 	if(strlen(szCmd)) {
 		DWORD dwFLAmount = atoi(szCmd);
 		if(dwFLAmount >= 20 && dwFLAmount <= 100) {
-			//UnFuck(0xC1704C,4);
-			*(PDWORD)0xC1704C = (DWORD)(dwFLAmount * 1.375f);
+			pConfig->SetInt("fpslimit", dwFLAmount);
+			pGame->FrameLimiter();
 			pChatWindow->AddDebugMessage("FrameLimiter: %u",dwFLAmount);
 		} else {
 			pChatWindow->AddDebugMessage("FrameLimiter: valid amounts are 20-100",dwFLAmount);
@@ -1424,18 +1424,33 @@ static void cmdTeamTest(PCHAR szCmd)
 static void cmdSetChatPageSize(PCHAR szCmd)
 {
 	unsigned int uiSize = (unsigned int)atoi(szCmd);
-	if (1 <= uiSize && uiSize <= 30)
-		pChatWindow->SetPageSize(uiSize);
+	if (1 <= uiSize && uiSize <= 30) {
+		pConfig->SetInt("pagesize", uiSize);
+		pChatWindow->SetPageSize();
+	}
 	else
 		pChatWindow->AddInfoMessage("Usage: /pagesize [1-30]");
+}
+
+static void cmdSetChatFontSize(PCHAR szCmd)
+{
+	if (strlen(szCmd)) {
+		int iFont = atoi(szCmd);
+
+		if (iFont >= -3 && iFont <= 5) {
+			pConfig->SetInt("fontsize", iFont);
+			pDefaultFont->CreateFonts();
+		}
+		else pChatWindow->AddDebugMessage("Valid fontsize: -3 to 5");
+	} else pChatWindow->AddDebugMessage("Example of use: /fontsize -3 to 5");
 }
 
 static void cmdToggleChatTimeStamp(PCHAR szCmd)
 {
 	(void)szCmd;
 
-	if (pChatWindow)
-		pChatWindow->ToggleTimeStamp();
+	bTimeStamp = !bTimeStamp;
+	pConfig->SetInt("timestamp", bTimeStamp);
 }
 
 void cmdDisableVehMapIcon(PCHAR szCmd)
@@ -1450,20 +1465,22 @@ static void cmdShowMem(PCHAR szCmd)
 	pChatWindow->AddDebugMessage("Memory: %u", *(DWORD*)0x8A5A80);
 }
 
-// TODO: Add "nohudscalefix" config store here
 static void cmdHudScaleFix(PCHAR szCmd)
 {
 	(void)szCmd;
 
 	bWantHudScaling = !bWantHudScaling;
+
+	pConfig->SetInt("nohudscalefix", bWantHudScaling);
 }
 
-// TODO: Add "disableheadmove" config save here
 static void cmdHeadMove(PCHAR szCmd)
 {
 	(void)szCmd;
 
 	bHeadMove = !bHeadMove;
+
+	pConfig->SetInt("disableheadmove", bHeadMove ? 0 : 1);
 
 	pChatWindow->AddInfoMessage(bHeadMove ? "-> Head movements enabled" : "-> Head movements disabled");
 }
@@ -1471,6 +1488,16 @@ static void cmdHeadMove(PCHAR szCmd)
 void cmdDebugLabels(PCHAR szCmd)
 {
 	bShowDebugLabels = !bShowDebugLabels;
+}
+
+static void cmdAudioMsg(PCHAR szCmd)
+{
+	(void)szCmd;
+	bool bAudio = pConfig->GetInt("audiomsgoff");
+	bAudio = !bAudio;
+
+	pConfig->SetInt("audiomsgoff", bAudio);
+	pChatWindow->AddInfoMessage(bAudio ? "Audio messages: Off" : "Audio messages: On");
 }
 
 void SetupCommands()
@@ -1483,8 +1510,10 @@ void SetupCommands()
 	pCmdWindow->AddCmdProc("rs", cmdRawSave);
 	pCmdWindow->AddCmdProc("rcon",cmdRcon);
 	pCmdWindow->AddCmdProc("mem", cmdShowMem);
+	pCmdWindow->AddCmdProc("audiomsg", cmdAudioMsg);
 
 	pCmdWindow->AddCmdProc("pagesize", cmdSetChatPageSize);
+	pCmdWindow->AddCmdProc("fontsize", cmdSetChatFontSize);
 	pCmdWindow->AddCmdProc("timestamp", cmdToggleChatTimeStamp);
 	pCmdWindow->AddCmdProc("hudscalefix", cmdHudScaleFix);
 	pCmdWindow->AddCmdProc("headmove", cmdHeadMove);

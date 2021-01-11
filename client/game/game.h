@@ -178,6 +178,8 @@ public:
 	static float GetAspectRatio();
 
 	static void PlayCrimeReport(int iCrimeID, VECTOR* vecPos, int iVehicleType, int iVehicleCol1);
+
+	void FrameLimiter();
 };
 
 //-----------------------------------------------------------

@@ -416,7 +416,7 @@ void CRemotePlayer::ProcessSpecialActions(BYTE byteSpecialAction)
 
 	// headsync:always
 	if(GetState() == PLAYER_STATE_ONFOOT && m_pPlayerPed->IsAdded()) {
-		if((GetTickCount() - m_dwLastHeadUpdate) > 500) {
+		if((GetTickCount() - m_dwLastHeadUpdate) > 500 && !pConfig->GetInt("disableheadmove")) {
             VECTOR LookAt;
 			CAMERA_AIM *Aim = GameGetRemotePlayerAim(m_pPlayerPed->m_bytePlayerNumber);
             LookAt.X = Aim->pos1x + (Aim->f1x * 20.0f);

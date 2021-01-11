@@ -1052,3 +1052,12 @@ void CGame::PlayCrimeReport(int iCrimeID, VECTOR* vecPos, /*bool bNeedVehicle,*/
 	if (pVehicle)
 		delete pVehicle;
 }
+
+void CGame::FrameLimiter()
+{
+	int iFrame = pConfig->GetInt("fpslimit");
+	if (iFrame >= 20 && iFrame <= 100)
+		*(PDWORD)0xC1704C = (DWORD)(iFrame * 1.375f);
+	else
+		*(PDWORD)0xC1704C = (DWORD)(50 * 1.375f);
+}

@@ -48,21 +48,20 @@ int GetFontSize()
 	else
 		n = 14;
 
-	return n + 2 * 0; // TODO: 0 should be replace with pConfig->GetInt("fontsize");
+	return n + 2 * pConfig->GetInt("fontsize");
 }
 
 int GetFontWeight()
 {
-	int r = 0; // TODO: 0 should be replaced with pConfig->GetInt("fontweight");
+	int r = pConfig->GetInt("fontweight");
 
 	return r != 1 ? FW_BOLD : FW_NORMAL;
 }
 
 char* GetFontFace()
 {
-	// TODO: Add pConfig->GetString("fontface");
-	// If pConfig and "fontface" is NULL, then returns "Arial"
-	return "Arial";
+	if (pConfig->GetString("fontface") == NULL) return "Arial";
+	return pConfig->GetString("fontface");
 }
 
 void CFontRender::CreateFonts()

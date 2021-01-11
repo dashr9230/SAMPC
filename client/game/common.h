@@ -211,6 +211,7 @@ typedef struct _VEHICLE_TYPE
 	float fPlaneLandingGear;// 2508-2512
 	PADDING(_pad247, 1517); // 2512-4029
 } VEHICLE_TYPE;
+#pragma pack()
 
 //-----------------------------------------------------------
 
