@@ -3347,18 +3347,13 @@ static cell n_SetPlayerCameraPos(AMX *amx, cell *params)
 	if (!pNetGame->GetPlayerPool()->GetSlotState(params[1])) return 0;
 
 	RakNet::BitStream out;
-	VECTOR vecPos, vecRot;
+	VECTOR vecPos;
 
 	vecPos.X = amx_ctof(params[2]);
 	vecPos.Y = amx_ctof(params[3]);
 	vecPos.Z = amx_ctof(params[4]);
 
-	vecRot.X = amx_ctof(params[5]);
-	vecRot.Y = amx_ctof(params[6]);
-	vecRot.Z = amx_ctof(params[7]);
-
 	out.Write(vecPos);
-	out.Write(vecRot);
 
 	pNetGame->SendToPlayer(params[1], RPC_ScrSetCameraPos, &out);
 	return 1;

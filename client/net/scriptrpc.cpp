@@ -279,11 +279,11 @@ void ScrSetInterior(RPCParameters *rpcParams)
 void ScrSetCameraPos(RPCParameters *rpcParams)
 {
 	RakNet::BitStream in(rpcParams);
-	VECTOR vecPos, vecRot;
+	VECTOR vecPos;
 
-	if(in.Read(vecPos) && in.Read(vecRot))
+	if(in.Read(vecPos))
 		pGame->GetCamera()->SetPosition(vecPos.X, vecPos.Y,
-			vecPos.Z, vecRot.X, vecRot.Y, vecRot.Z);
+			vecPos.Z, 0.0, 0.0, 0.0);
 }
 
 //----------------------------------------------------
