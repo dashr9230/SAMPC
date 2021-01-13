@@ -75,6 +75,7 @@ enum
 	RPC_ScrSetVehicleZAngle,
 	RPC_ScrVehicleParams,
 	RPC_ScrSetCameraBehindPlayer,
+	RPC_ScrAttachCameraObject,
 	RPC_ScrTogglePlayerControllable,
 	RPC_ScrPlaySound,
 	RPC_ScrSetWorldBounds,

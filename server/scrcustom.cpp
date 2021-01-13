@@ -3409,6 +3409,68 @@ static cell n_SetCameraBehindPlayer(AMX *amx, cell *params)
 
 //----------------------------------------------------------------------------------
 
+// native AttachCameraToObject(playerid, objectid)
+static cell n_AttachCameraToObject(AMX *amx, cell *params)
+{
+	CHECK_PARAMS(amx, "AttachCameraToObject", 2);
+
+	if (!pNetGame->GetPlayerPool()->GetSlotState(params[1])) return 0;
+	CObject* pObject = pNetGame->GetObjectPool()->GetAt(params[2]);
+
+	if (pObject)
+	{
+		RakNet::BitStream bsParams;
+		VECTOR vecPos, vecRot;
+
+		vecPos.X = pObject->m_matWorld.pos.X;
+		vecPos.Y = pObject->m_matWorld.pos.Y;
+		vecPos.Z = pObject->m_matWorld.pos.Z;
+
+		vecRot.X = pObject->m_matWorld.up.X;
+		vecRot.Y = pObject->m_matWorld.up.Y;
+		vecRot.Z = pObject->m_matWorld.up.Z;
+
+		bsParams.Write(vecPos);
+		bsParams.Write(vecRot);
+
+		return pNetGame->SendToPlayer(params[1], RPC_ScrAttachCameraObject, &bsParams);
+	}
+
+	return 1;
+}
+
+// native AttachCameraToPlayerObject(playerid, playerobjectid)
+static cell n_AttachCameraToPlayerObject(AMX* amx, cell* params)
+{
+	CHECK_PARAMS(amx, "AttachCameraToPlayerObject", 2);
+
+	if (!pNetGame->GetPlayerPool()->GetSlotState(params[1])) return 0;
+	CObject* pObject = pNetGame->GetObjectPool()->GetAtIndividual(params[1], params[2]);
+
+	if (pObject)
+	{
+		RakNet::BitStream bsParams;
+		VECTOR vecPos, vecRot;
+
+		vecPos.X = pObject->m_matWorld.pos.X;
+		vecPos.Y = pObject->m_matWorld.pos.Y;
+		vecPos.Z = pObject->m_matWorld.pos.Z;
+
+		vecRot.X = pObject->m_matWorld.up.X;
+		vecRot.Y = pObject->m_matWorld.up.Y;
+		vecRot.Z = pObject->m_matWorld.up.Z;
+
+		bsParams.Write(vecPos);
+		bsParams.Write(vecRot);
+
+		return pNetGame->SendToPlayer(params[1], RPC_ScrAttachCameraObject, &bsParams);
+	}
+
+	return 1;
+}
+
+//----------------------------------------------------------------------------------
+
 // native TogglePlayerControllable(playerid, toggle);
 static cell n_TogglePlayerControllable(AMX *amx, cell *params)
 {
@@ -7212,6 +7274,8 @@ AMX_NATIVE_INFO custom_Natives[] =
 	{ "SetPlayerCameraLookAt",	n_SetPlayerCameraLookAt },
 	{ "SetPlayerCameraPos",		n_SetPlayerCameraPos },
 	{ "SetCameraBehindPlayer",	n_SetCameraBehindPlayer },
+	DEFINE_NATIVE(AttachCameraToObject),
+	DEFINE_NATIVE(AttachCameraToPlayerObject),
 	{ "TogglePlayerControllable",	n_TogglePlayerControllable },
 	{ "PlayerPlaySound",		n_PlayerPlaySound },
 	DEFINE_NATIVE(SetPlayerScore),

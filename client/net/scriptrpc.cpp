@@ -309,6 +309,24 @@ void ScrSetCameraLookAt(RPCParameters *rpcParams)
 
 //----------------------------------------------------
 
+void ScrAttachCameraObject(RPCParameters* rpcParams)
+{
+	if (rpcParams->numberOfBitsOfData == 192)
+	{
+		RakNet::BitStream bsData(rpcParams);
+		VECTOR vecPos, vecRot;
+
+		bsData.Read(vecPos);
+		bsData.Read(vecRot);
+
+		pGame->GetCamera()->SetPosition(vecPos.X, vecPos.Y,
+			vecPos.Z, vecRot.X, vecRot.Y, vecRot.Z);
+		pGame->GetCamera()->LookAtPoint(vecPos.X, vecPos.Y, vecPos.Z, 2);
+	}
+}
+
+//----------------------------------------------------
+
 void ScrSetVehiclePos(RPCParameters *rpcParams)
 {
 	RakNet::BitStream bsData(rpcParams);
@@ -1787,6 +1805,7 @@ void RegisterScriptRPCs(RakClientInterface* pRakClient)
 	REGISTER_STATIC_RPC(pRakClient, ScrSetInterior);
 	REGISTER_STATIC_RPC(pRakClient, ScrSetCameraPos);
 	REGISTER_STATIC_RPC(pRakClient, ScrSetCameraLookAt);
+	REGISTER_STATIC_RPC(pRakClient, ScrAttachCameraObject);
 	REGISTER_STATIC_RPC(pRakClient, ScrSetVehiclePos);
 	REGISTER_STATIC_RPC(pRakClient, ScrSetVehicleZAngle);
 	REGISTER_STATIC_RPC(pRakClient, ScrVehicleParams);
