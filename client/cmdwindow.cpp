@@ -40,15 +40,6 @@ void CCmdWindow::ResetDialogControls(CDXUTDialog *pGameUI)
 
 	if(pGameUI) {
 		pGameUI->AddEditBox(IDC_CMDEDIT,"",5,175,420,35,true,&m_pEditControl);
-		m_pEditControl->GetElement(0)->TextureColor.Init(D3DCOLOR_ARGB( 170, 20, 20, 20 ));
-		m_pEditControl->GetElement(1)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditControl->GetElement(2)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditControl->GetElement(3)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditControl->GetElement(4)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditControl->GetElement(5)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditControl->GetElement(6)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditControl->GetElement(7)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditControl->GetElement(8)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
 		m_pEditControl->SetTextColor(D3DCOLOR_ARGB( 255, 255, 255, 255 ));
 		m_pEditControl->SetCaretColor(D3DCOLOR_ARGB( 255, 150, 150, 150 ));
 		m_pEditControl->SetEnabled(false);
