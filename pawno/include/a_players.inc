@@ -244,8 +244,12 @@ native PlayerTextDrawSetShadow(playerid, PlayerText:text, size);
 native PlayerTextDrawFont(playerid, PlayerText:text, font);
 native PlayerTextDrawSetOutline(playerid, PlayerText:text, size);
 native PlayerTextDrawSetProportional(playerid, PlayerText:text, set);
+native PlayerTextDrawSetSelectable(playerid, PlayerText:text, set);
 native PlayerTextDrawShow(playerid, PlayerText:text);
 native PlayerTextDrawHide(playerid, PlayerText:text);
 native PlayerTextDrawSetString(playerid, PlayerText:text, string[]);
 native PlayerTextDrawDestroy(playerid, PlayerText:text);
+
+native SelectTextDraw(playerid, hovercolor);
+native CancelSelectTextDraw(playerid);
 

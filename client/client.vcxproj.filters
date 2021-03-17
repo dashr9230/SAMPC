@@ -329,6 +329,7 @@
     <ClCompile Include="audiostream.cpp" />
     <ClCompile Include="colorembed.cpp" />
     <ClCompile Include="licenseplate.cpp" />
+	<ClCompile Include="textdrawselect.cpp" />
     <ClCompile Include="game\txdstuff.cpp">
       <Filter>game</Filter>
     </ClCompile>
@@ -764,6 +765,7 @@
     <ClInclude Include="audiostream.h" />
     <ClInclude Include="colorembed.h" />
     <ClInclude Include="licenseplate.h" />
+	<ClInclude Include="textdrawselect.cpp" />
     <ClInclude Include="game\txdstuff.h">
       <Filter>game</Filter>
     </ClInclude>

@@ -1306,3 +1306,41 @@ void CFilterScripts::OnPlayerGiveDamageActor(cell playerid, cell actorid,
 		}
 	}
 }
+
+//----------------------------------------------------------------------------------
+
+void CFilterScripts::OnPlayerClickTextDraw(cell playerid, cell clickedid)
+{
+	int idx = 0;
+
+	for (char i = 0; i < MAX_FILTER_SCRIPTS; i++)
+	{
+		if (m_pFilterScripts[i] == NULL)
+			continue;
+
+		if (!amx_FindPublic(m_pFilterScripts[i], "OnPlayerClickTextDraw", &idx))
+		{
+			amx_Push(m_pFilterScripts[i], clickedid);
+			amx_Push(m_pFilterScripts[i], playerid);
+			amx_Exec(m_pFilterScripts[i], NULL, idx);
+		}
+	}
+}
+
+void CFilterScripts::OnPlayerClickPlayerTextDraw(cell playerid, cell playertextid)
+{
+	int idx = 0;
+
+	for (char i = 0; i < MAX_FILTER_SCRIPTS; i++)
+	{
+		if (m_pFilterScripts[i] == NULL)
+			continue;
+
+		if (!amx_FindPublic(m_pFilterScripts[i], "OnPlayerClickPlayerTextDraw", &idx))
+		{
+			amx_Push(m_pFilterScripts[i], playertextid);
+			amx_Push(m_pFilterScripts[i], playerid);
+			amx_Exec(m_pFilterScripts[i], NULL, idx);
+		}
+	}
+}

@@ -1922,6 +1922,29 @@ static void ScrDisableVehicleCollision(RPCParameters* rpcParams)
 
 //----------------------------------------------------
 
+static void ScrSelectTextDraw(RPCParameters* rpcParams)
+{
+	if (rpcParams->numberOfBitsOfData == 1 || 
+		rpcParams->numberOfBitsOfData == 33)
+	{
+		RakNet::BitStream bsData(rpcParams);
+
+		if (pTextDrawSelect)
+		{
+			if (bsData.ReadBit()) {
+				DWORD dwColor;
+				bsData.Read(dwColor);
+
+				pTextDrawSelect->Enable(dwColor);
+			}
+			else if (!bsData.ReadBit())
+				pTextDrawSelect->Disable();
+		}
+	}
+}
+
+//----------------------------------------------------
+
 void RegisterScriptRPCs(RakClientInterface* pRakClient)
 {
 	REGISTER_STATIC_RPC(pRakClient, ScrSetSpawnInfo);
@@ -2015,6 +2038,7 @@ void RegisterScriptRPCs(RakClientInterface* pRakClient)
 	REGISTER_STATIC_RPC(pRakClient, ScrApplyActorAnimation);
 	REGISTER_STATIC_RPC(pRakClient, ScrClearActorAnimation);
 	REGISTER_STATIC_RPC(pRakClient, ScrDisableVehicleCollision);
+	REGISTER_STATIC_RPC(pRakClient, ScrSelectTextDraw);
 }
 
 //----------------------------------------------------

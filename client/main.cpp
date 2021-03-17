@@ -43,6 +43,7 @@ CNetStats				*pNetStats=NULL;
 CAudioStream			*pAudioStream=NULL;
 CConfigFile				*pConfigFile=NULL;
 CChatBubble				*pChatBubble=NULL;
+CTextDrawSelect         *pTextDrawSelect = NULL;
 
 bool					bShowDebugLabels = false;
 bool					bWantHudScaling = true;
@@ -399,6 +400,7 @@ void DoInitStuff()
 			//pHelpDialog = new CHelpDialog(pD3DDevice);
 			pAudioStream = new CAudioStream;
 			pChatBubble = new CChatBubble();
+			pTextDrawSelect = new CTextDrawSelect();
 
 			pDeathWindow->CreateFonts();
 		}

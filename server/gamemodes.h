@@ -88,6 +88,8 @@ public:
 	void OnActorStreamIn(cell actorid, cell forplayerid);
 	void OnActorStreamOut(cell actorid, cell forplayerid);
 	void OnPlayerGiveDamageActor(cell playerid, cell actorid, float fDamage, cell weaponid, cell bodypart);
+	void OnPlayerClickTextDraw(cell playerid, cell clickedid);
+	void OnPlayerClickPlayerTextDraw(cell playerid, cell playertextid);
 };
 
 //----------------------------------------------------------------------------------

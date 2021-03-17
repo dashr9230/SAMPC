@@ -33,10 +33,17 @@ CTextDraw::CTextDraw(TEXT_DRAW_TRANSMIT *TextDrawTransmit, PCHAR szText)
 	m_TextDrawData.byteAlignLeft = TextDrawTransmit->byteLeft;
 	m_TextDrawData.byteAlignRight = TextDrawTransmit->byteRight;
 	m_TextDrawData.dwStyle = TextDrawTransmit->byteStyle;
+	m_TextDrawData.byteSelectable = TextDrawTransmit->byteSelectable;
 	m_TextDrawData.fX = TextDrawTransmit->fX;
 	m_TextDrawData.fY = TextDrawTransmit->fY;
 	m_TextDrawData.dwParam1 = 0xFFFFFFFF;
 	m_TextDrawData.dwParam2 = 0xFFFFFFFF;
+	m_TextDrawData.dwSelectColor = 0;
+	m_TextDrawData.bColorSelect = false;
+	m_TextDrawData.rSelectArea.left = 0;
+	m_TextDrawData.rSelectArea.top = 0;
+	m_TextDrawData.rSelectArea.right = 0;
+	m_TextDrawData.rSelectArea.bottom = 0;
 	
 	strncpy(m_szText, szText, MAX_TEXT_DRAW_LINE);
 	m_szText[MAX_TEXT_DRAW_LINE - 1] = '\0';
@@ -68,7 +75,10 @@ void CTextDraw::Draw()
 	float fScaleX = (float)iScreenWidth * fHorizHudScale * m_TextDrawData.fLetterWidth;
 
 	Font_SetScale(fScaleX,fScaleY);
-	Font_SetColor(m_TextDrawData.dwLetterColor);
+	if (m_TextDrawData.bColorSelect)
+		Font_SetColor(m_TextDrawData.dwSelectColor);
+	else
+		Font_SetColor(m_TextDrawData.dwLetterColor);
     Font_Unk12(0);
 
 	if(m_TextDrawData.byteAlignRight) Font_SetJustify(2);
@@ -110,4 +120,25 @@ void CTextDraw::Draw()
     
     Font_PrintString(fUseX,fUseY,m_szString);
 	Font_SetOutline(0);
+
+	if (m_TextDrawData.byteAlignRight)
+	{
+		m_TextDrawData.rSelectArea.left = (LONG)(fUseX - (fLineWidth - fUseX));
+		m_TextDrawData.rSelectArea.right = (LONG)fUseX;
+		m_TextDrawData.rSelectArea.bottom = (LONG)(fUseY + fLineHeight);
+	}
+	else if (m_TextDrawData.byteCentered)
+	{
+		m_TextDrawData.rSelectArea.left = (LONG)(fUseX - fLineHeight * 0.5);
+		m_TextDrawData.rSelectArea.right = (m_TextDrawData.rSelectArea.left + (LONG)fLineHeight);
+		m_TextDrawData.rSelectArea.bottom = (LONG)(fUseY + fLineWidth);
+	}
+	else
+	{
+		m_TextDrawData.rSelectArea.left = (LONG)fUseX;
+		m_TextDrawData.rSelectArea.right = (LONG)(fLineWidth - (fUseX + fUseX));
+		m_TextDrawData.rSelectArea.bottom = (LONG)(fUseY + fLineHeight);
+	}
+
+	m_TextDrawData.rSelectArea.top = (LONG)fUseY;
 }

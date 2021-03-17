@@ -99,6 +99,7 @@ typedef struct _GAME_SETTINGS {
 #include "cursor.h"
 #include "audiostream.h"
 #include "configfile.h"
+#include "textdrawselect.h"
 
 void QuitGame();
 void UpdateDiscordPresence(char* state, char* details);
@@ -124,6 +125,7 @@ extern CCursor* pCursor;
 extern CAudioStream* pAudioStream;
 extern CConfigFile* pConfigFile;
 extern CChatBubble* pChatBubble;
+extern CTextDrawSelect* pTextDrawSelect;
 
 extern CDXUTDialogResourceManager* pDialogResourceManager;
 extern CDXUTDialog* pGameUI;

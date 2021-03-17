@@ -61,6 +61,7 @@ int CPlayerTextDrawPool::New(float fX, float fY, char* szText)
 			m_pTextDraws[iSlot]->byteLeft = 0;
 			m_pTextDraws[iSlot]->byteRight = 0;
 			m_pTextDraws[iSlot]->byteStyle = 1;
+			m_pTextDraws[iSlot]->byteSelectable = 0;
 			m_pTextDraws[iSlot]->fX = fX;
 			m_pTextDraws[iSlot]->fY = fY;
 
@@ -162,6 +163,11 @@ void CPlayerTextDrawPool::SetOutline(int iID, unsigned char ucOutline)
 void CPlayerTextDrawPool::SetProportional(int iID, int iProp)
 {
 	m_pTextDraws[iID]->byteProportional = (iProp != 0) ? 1 : 0;
+}
+
+void CPlayerTextDrawPool::SetSelectable(int iID, bool bSelect)
+{
+	m_pTextDraws[iID]->byteSelectable = bSelect;
 }
 
 void CPlayerTextDrawPool::Show(int iID)

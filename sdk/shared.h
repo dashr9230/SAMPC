@@ -358,6 +358,7 @@ typedef struct {
 	unsigned char byteOutline;
 	unsigned long dwBackgroundColor;
 	unsigned char byteStyle;
+	unsigned char byteSelectable;
 	float fX;
 	float fY;
 } TEXT_DRAW_TRANSMIT;

@@ -6593,6 +6593,18 @@ static cell n_TextDrawSetProportional(AMX *amx, cell *params)
 	return 0;
 }
 
+static cell n_TextDrawSetSelectable(AMX* amx, cell* params)
+{
+	CHECK_PARAMS(amx, "TextDrawSetSelectable", 2);
+	CTextDrawPool* pTextDraw = pNetGame->GetTextDrawPool();
+	if (pTextDraw && pTextDraw->GetSlotState(params[1]))
+	{
+		pTextDraw->SetSelectable(params[1], params[2]);
+		return 1;
+	}
+	return 0;
+}
+
 static cell n_TextDrawShowForPlayer(AMX *amx, cell *params)
 {
 	CHECK_PARAMS(amx, "TextDrawShowForPlayer", 2);
@@ -6649,6 +6661,44 @@ static cell n_TextDrawDestroy(AMX *amx, cell *params)
 	if (!pNetGame->GetTextDrawPool()->GetSlotState(params[1])) return 0;
 	pNetGame->GetTextDrawPool()->Delete(params[1]);
 	return 1;
+}
+
+static cell n_SelectTextDraw(AMX* amx, cell* params)
+{
+	CHECK_PARAMS(amx, "SelectTextDraw", 2);
+
+
+	if (pNetGame->GetPlayerPool() &&
+		pNetGame->GetPlayerPool()->GetSlotState(params[1]))
+	{
+		if (pNetGame->GetTextDrawPool()) {
+			RakNet::BitStream bsSend;
+
+			bsSend.Write1();
+			bsSend.Write((DWORD)params[2]);
+
+			return pNetGame->SendToPlayer(params[1], RPC_ScrSelectTextDraw, &bsSend);
+		}
+	}
+	return 0;
+}
+
+static cell n_CancelSelectTextDraw(AMX* amx, cell* params)
+{
+	CHECK_PARAMS(amx, "CancelSelectTextDraw", 1);
+
+	if (pNetGame->GetPlayerPool() &&
+		pNetGame->GetPlayerPool()->GetSlotState(params[1]))
+	{
+		if (pNetGame->GetTextDrawPool()) {
+			RakNet::BitStream bsSend;
+
+			bsSend.Write0();
+
+			return pNetGame->SendToPlayer(params[1], RPC_ScrSelectTextDraw, &bsSend);
+		}
+	}
+	return 0;
 }
 
 // native CreatePlayerTextDraw(playerid, Float:x, Float:y, text[])
@@ -6842,6 +6892,21 @@ static cell n_PlayerTextDrawSetProportional(AMX* amx, cell* params)
 		CPlayer* pPlayer = pNetGame->GetPlayerPool()->GetAt(params[1]);
 		if (pPlayer && pPlayer->m_pTextDraw && pPlayer->m_pTextDraw->IsValid(params[2])) {
 			pPlayer->m_pTextDraw->SetProportional(params[2], params[3]);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+// native PlayerTextDrawSetSelectable(playerid, PlayerText:text, set)
+static cell n_PlayerTextDrawSetSelectable(AMX* amx, cell* params)
+{
+	CHECK_PARAMS(amx, "PlayerTextDrawSetSelectable", 3);
+
+	if (pNetGame->GetPlayerPool()) {
+		CPlayer* pPlayer = pNetGame->GetPlayerPool()->GetAt(params[1]);
+		if (pPlayer && pPlayer->m_pTextDraw && pPlayer->m_pTextDraw->IsValid(params[2])) {
+			pPlayer->m_pTextDraw->SetSelectable(params[2], params[3]);
 			return 1;
 		}
 	}
@@ -7888,11 +7953,14 @@ AMX_NATIVE_INFO custom_Natives[] =
 	{ "TextDrawBackgroundColor",	n_TextDrawBackgroundColor },
 	{ "TextDrawFont",				n_TextDrawFont },
 	{ "TextDrawSetProportional",	n_TextDrawSetProportional },
+	{ "TextDrawSetSelectable",		n_TextDrawSetSelectable },
 	{ "TextDrawShowForPlayer",		n_TextDrawShowForPlayer },
 	{ "TextDrawShowForAll",			n_TextDrawShowForAll },
 	{ "TextDrawHideForPlayer",		n_TextDrawHideForPlayer },
 	{ "TextDrawHideForAll",			n_TextDrawHideForAll },
 	{ "TextDrawDestroy",			n_TextDrawDestroy },
+	{ "SelectTextDraw",				n_SelectTextDraw },
+	{ "CancelSelectTextDraw",		n_CancelSelectTextDraw },
 	
 	// Player TextDraw
 	DEFINE_NATIVE(CreatePlayerTextDraw),
@@ -7907,6 +7975,7 @@ AMX_NATIVE_INFO custom_Natives[] =
 	DEFINE_NATIVE(PlayerTextDrawFont),
 	DEFINE_NATIVE(PlayerTextDrawSetOutline),
 	DEFINE_NATIVE(PlayerTextDrawSetProportional),
+	DEFINE_NATIVE(PlayerTextDrawSetSelectable),
 	DEFINE_NATIVE(PlayerTextDrawShow),
 	DEFINE_NATIVE(PlayerTextDrawHide),
 	DEFINE_NATIVE(PlayerTextDrawSetString),

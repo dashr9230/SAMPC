@@ -74,6 +74,7 @@ WORD CTextDrawPool::New(float fX, float fY, char* szText)
 		TextDraw->byteLeft = 0;
 		TextDraw->byteRight = 0;
 		TextDraw->byteStyle = 1;
+		TextDraw->byteSelectable = 0;
 		TextDraw->fX = fX;
 		TextDraw->fY = fY;
 		m_TextDraw[wText] = TextDraw;
@@ -204,4 +205,9 @@ void CTextDrawPool::SetBoxColor(WORD wText, DWORD dwColor)
 void CTextDrawPool::SetBackgroundColor(WORD wText, DWORD dwColor)
 {
 	m_TextDraw[wText]->dwBackgroundColor = RGBA_ABGR(dwColor);
+}
+
+void CTextDrawPool::SetSelectable(WORD wText, BYTE byteSelect)
+{
+	m_TextDraw[wText]->byteSelectable = byteSelect;
 }

@@ -76,7 +76,7 @@ VOID SwitchWindowedMode()
 
 }
 
-BOOL HandleKeyPress(DWORD vKey) 
+bool HandleKeyPress(DWORD vKey) 
 {
 	static int i = -1;
 	switch(vKey)
@@ -94,7 +94,7 @@ BOOL HandleKeyPress(DWORD vKey)
 			break;
 
 		case VK_F8:
-			g_bTakeScreenshot = TRUE;
+			g_bTakeScreenshot = true;
 			break;
 			
 		case VK_F9:			
@@ -172,6 +172,11 @@ BOOL HandleKeyPress(DWORD vKey)
 			if(pCmdWindow->isEnabled()) {
 				pCmdWindow->Disable();
 			}
+
+			if (pTextDrawSelect->IsActive()) {
+				pTextDrawSelect->Disable();
+			}
+
 			break;
 		}
 		/*case VK_F1:
@@ -193,22 +198,28 @@ BOOL HandleKeyPress(DWORD vKey)
 	}
 
 
-	return FALSE;
+	return false;
 }
 
 //----------------------------------------------------
 
-BOOL HandleCharacterInput(DWORD dwChar)
+bool HandleCharacterInput(DWORD dwChar)
 {
 	if (pGame->IsMenuActive())
-		return FALSE;
+		return false;
+
+	if (dwChar == VK_ESCAPE) {
+		if (pTextDrawSelect->IsActive())
+			pTextDrawSelect->Disable();
+			return true;
+	}
 
 	if(pCmdWindow->isEnabled()) {
 		switch (dwChar)
 		{
-			case 27: // escape
+			case VK_ESCAPE:
 				pCmdWindow->Disable();
-				return TRUE;
+				return true;
 		}
 	}
 	else {
@@ -217,10 +228,10 @@ BOOL HandleCharacterInput(DWORD dwChar)
 			case 't':
 			case 'T':
 				pCmdWindow->Enable();
-				return TRUE;
+				return true;
 		}
 	}
-	return FALSE;
+	return false;
 }
 
 //----------------------------------------------------
@@ -258,6 +269,9 @@ LRESULT APIENTRY NewWndProc( HWND hwnd,UINT uMsg,
 	}
 	if (pSpawnScreen)
 		pSpawnScreen->MsgProc(hwnd, uMsg, wParam, lParam);
+
+	if (pTextDrawSelect)
+		pTextDrawSelect->MsgProc(uMsg, wParam);
 
 	switch(uMsg) {
 		case WM_SYSKEYUP:

@@ -254,6 +254,7 @@
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</BrowseInformation>
     </ClCompile>
     <ClCompile Include="fontrender.cpp" />
+	<ClCompile Include="textdrawselect.cpp" />
     <ClCompile Include="game\actor.cpp" />
     <ClCompile Include="game\aimstuff.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
@@ -618,6 +619,7 @@
     <ClInclude Include="filehooks.h" />
     <ClInclude Include="filesystem.h" />
     <ClInclude Include="fontrender.h" />
+	<ClInclude Include="textdrawselect.h" />
     <ClInclude Include="game\actor.h" />
     <ClInclude Include="game\address.h" />
     <ClInclude Include="game\aimstuff.h" />

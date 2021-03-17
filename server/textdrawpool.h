@@ -48,6 +48,7 @@ public:
 	void SetFont(WORD wText, BYTE byteFont) { m_TextDraw[wText]->byteStyle = byteFont; };
 	void SetTextString(WORD wText, char* szText);
 	void SetProportional(WORD wText, BYTE byteSet) { m_TextDraw[wText]->byteProportional = byteSet ? 1 : 0; };
+	void SetSelectable(WORD wText, BYTE byteSet);
 };
 
 //----------------------------------------------------

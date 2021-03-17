@@ -36,6 +36,10 @@ typedef struct _TEXT_DRAW_DATA
 	char cGXT[8];			// 48
 	DWORD dwParam1;			// 60-64
 	DWORD dwParam2;			// 64-68
+	BYTE byteSelectable;    // 69
+	DWORD dwSelectColor;	// 70-74
+	bool bColorSelect;		// 75
+	RECT rSelectArea;       // 76-108
 } TEXT_DRAW_DATA;
 
 //----------------------------------------------------
@@ -47,16 +51,16 @@ private:
 	CHAR			m_szText[MAX_TEXT_DRAW_LINE];
 	CHAR			m_szString[MAX_TEXT_DRAW_LINE*4];
 
-	TEXT_DRAW_DATA  m_TextDrawData;
-
 public:
 	CTextDraw(TEXT_DRAW_TRANSMIT *TextDrawTransmit, PCHAR szText);
 	~CTextDraw(){};
-	
+
 	PCHAR GetText() { return m_szText; };
 	void SetText(char* szText);
 
 	void Draw();
+
+	TEXT_DRAW_DATA m_TextDrawData;
 };
 
 

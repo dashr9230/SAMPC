@@ -323,6 +323,7 @@ HRESULT __stdcall IDirect3DDevice9Hook::Present(CONST RECT* pSourceRect, CONST R
 	}
 
 	if (pAudioStream) pAudioStream->Process();
+	if (pTextDrawSelect) pTextDrawSelect->Process();
 
 	DoCheatDataStoring();
 

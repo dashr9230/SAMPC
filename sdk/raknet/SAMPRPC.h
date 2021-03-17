@@ -60,6 +60,7 @@ enum
 	RPC_WorldRemoveActor,
 	RPC_ActorDamage,
 	RPC_ChatBubble,
+	RPC_ClickTextDraw,
 
 	RPC_ScrSetSpawnInfo = 100,
 	RPC_ScrSetPlayerTeam,
@@ -124,6 +125,7 @@ enum
 	RPC_ScrShowTextDraw,
 	RPC_ScrHideTextDraw,
 	RPC_ScrEditTextDraw,
+	RPC_ScrSelectTextDraw,
 	RPC_ScrAddGangZone,
 	RPC_ScrRemoveGangZone,
 	RPC_ScrFlashGangZone,

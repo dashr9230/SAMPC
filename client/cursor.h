@@ -17,6 +17,7 @@ public:
 		struct {
 			unsigned char m_ucShowForChatbox : 1;
 			unsigned char m_ucShowForSpawnScreen : 1;
+			unsigned char m_ucShowForTextDraw : 1;
 		};
 	};
 
