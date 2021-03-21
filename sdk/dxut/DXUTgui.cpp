@@ -2010,7 +2010,7 @@ void CDXUTDialog::InitDefaultElements()
     //-------------------------------------
     SetRect( &rcTexture, 243, 144, 265, 155 );
     Element.SetTexture( 0, &rcTexture );
-    Element.TextureColor.Init(D3DCOLOR_ARGB(170, 20, 20, 20),D3DCOLOR_ARGB(170, 20, 20, 20));
+    Element.TextureColor.Init(D3DCOLOR_ARGB(255, 255, 255, 255),D3DCOLOR_ARGB(255, 255, 255, 255));
 
     // Assign the Element
     SetDefaultElement( DXUT_CONTROL_SCROLLBAR, 0, &Element );
@@ -2020,10 +2020,8 @@ void CDXUTDialog::InitDefaultElements()
     //-------------------------------------
     SetRect( &rcTexture, 243, 124, 265, 144 );
     Element.SetTexture( 0, &rcTexture );
-	Element.TextureColor.Init(D3DCOLOR_ARGB(0, 20, 20, 20),D3DCOLOR_ARGB(0, 20, 20, 20));
+	Element.TextureColor.Init(D3DCOLOR_ARGB(255, 255, 255, 255),D3DCOLOR_ARGB(255, 255, 255, 255));
         
-    
-    
     // Assign the Element
     SetDefaultElement( DXUT_CONTROL_SCROLLBAR, 1, &Element );
 
@@ -2032,8 +2030,7 @@ void CDXUTDialog::InitDefaultElements()
     //-------------------------------------
     SetRect( &rcTexture, 243, 155, 265, 176 );
     Element.SetTexture( 0, &rcTexture );
-    Element.TextureColor.Init(D3DCOLOR_ARGB(0, 20, 20, 20),D3DCOLOR_ARGB(0, 20, 20, 20));
-        
+    Element.TextureColor.Init(D3DCOLOR_ARGB(255, 255, 255, 255),D3DCOLOR_ARGB(255, 255, 255, 255)); 
     
     // Assign the Element
     SetDefaultElement( DXUT_CONTROL_SCROLLBAR, 2, &Element );
@@ -2043,7 +2040,7 @@ void CDXUTDialog::InitDefaultElements()
     //-------------------------------------
     SetRect( &rcTexture, 266, 123, 286, 167 );
     Element.SetTexture( 0, &rcTexture );
-    Element.TextureColor.Init(D3DCOLOR_ARGB(255, 200, 200, 200),D3DCOLOR_ARGB(255, 200, 200, 200));
+    Element.TextureColor.Init(D3DCOLOR_ARGB(255, 185, 34, 40),D3DCOLOR_ARGB(255, 149, 176, 208));
 
     // Assign the Element
     SetDefaultElement( DXUT_CONTROL_SCROLLBAR, 3, &Element );
