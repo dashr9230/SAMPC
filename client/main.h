@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <process.h>
+#include <psapi.h>
 
 #define IDC_CMDEDIT		1
 #define IDC_CHATBACK	2
