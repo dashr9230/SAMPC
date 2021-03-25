@@ -86,7 +86,7 @@ void StatisticsToString( RakNetStatisticsStruct *s, char *buffer, int verbosityL
 			bpsSent / 1000.0,
 			bpsReceived / 1000.0);
 	}
-	else
+	else if ( verbosityLevel == 2 )
 	{
 		RakNet::Time time = RakNet::GetTime();
 		double elapsedTime;
@@ -171,5 +171,36 @@ void StatisticsToString( RakNetStatisticsStruct *s, char *buffer, int verbosityL
 			bpsSent / 1000.0,
 			bpsReceived / 1000.0
 			);
+	}
+	else if ( verbosityLevel == 4 )
+	{	
+		// Verbosity level 4
+		sprintf( buffer,
+			"Messages in Send buffer: %u\n"
+			"Messages sent: %u\n"
+			"Bytes sent: %u\n"
+			"Acks sent: %u\n"
+			"Acks in send buffer: %u\n"
+			"Messages waiting for ack: %u\n"
+			"Messages resent: %u\n"
+			"Bytes resent: %u\n"
+			"Packetloss: %.1f%%\n"
+			"Messages received: %u\n"
+			"Bytes received: %u\n"
+			"Acks received: %u\n"
+			"Duplicate acks received: %u\n",
+			s->messageSendBuffer[ SYSTEM_PRIORITY ] + s->messageSendBuffer[ HIGH_PRIORITY ] + s->messageSendBuffer[ MEDIUM_PRIORITY ] + s->messageSendBuffer[ LOW_PRIORITY ],
+			s->messagesSent[ SYSTEM_PRIORITY ] + s->messagesSent[ HIGH_PRIORITY ] + s->messagesSent[ MEDIUM_PRIORITY ] + s->messagesSent[ LOW_PRIORITY ],
+			BITS_TO_BYTES( s->totalBitsSent ),
+			s->acknowlegementsSent,
+			s->acknowlegementsPending,
+			s->messagesOnResendQueue,
+			s->messageResends,
+			BITS_TO_BYTES( s->messagesTotalBitsResent ),
+			100.0f * ( float ) s->messagesTotalBitsResent / ( float ) s->totalBitsSent,
+			s->duplicateMessagesReceived + s->invalidMessagesReceived + s->messagesReceived,
+			BITS_TO_BYTES( s->bitsReceived + s->bitsWithBadCRCReceived ),
+			s->acknowlegementsReceived,
+			s->duplicateAcknowlegementsReceived);
 	}
 }

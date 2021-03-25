@@ -51,7 +51,7 @@ void CNetStats::Draw()
 	int iPlayersInRange = pLocalPlayer->DetermineNumberOfPlayersInLocalRange();
 	if(!iPlayersInRange) iPlayersInRange = 20;
 
-	sprintf_s(szDispBuf,"Download Rate: %.2f kbps\nUpload Rate: %.2f kbps\n",
+	sprintf_s(szDispBuf,"Download Rate: %.2f KB/s\nUpload Rate: %.2f KB/s\n",
 		fDown,fUp);
 
 	if(pPlayerPed) {
@@ -78,11 +78,21 @@ void CNetStats::Draw()
 		strcat_s(szDispBuf, szStatBuf);
 	}
 
-#ifdef _DEBUG
-	StatisticsToString(pRakStats,szStatBuf,2);
-#else
-	StatisticsToString(pRakStats,szStatBuf,1);
-#endif
+	PROCESS_MEMORY_COUNTERS psMemCounter;
+
+	SecureZeroMemory(&psMemCounter, sizeof(PROCESS_MEMORY_COUNTERS));
+
+	if (GetProcessMemoryInfo(GetCurrentProcess(), &psMemCounter, sizeof(psMemCounter)))
+	{
+		sprintf_s(szStatBuf, "Process Mem: %uKB Working Set: %uKB\n",
+			psMemCounter.PagefileUsage >> 10,
+			psMemCounter.WorkingSetSize >> 10);
+
+		strcat_s(szDispBuf, szStatBuf);
+	}
+
+	StatisticsToString(pRakStats, szStatBuf, 4);
+
 	strcat_s(szDispBuf,szStatBuf);
 
 	//m_pD3DDevice->GetDisplayMode(0,&dDisplayMode);
@@ -100,7 +110,7 @@ void CNetStats::Draw()
 	
 	int x=0;
 
-	pDefaultFont->RenderText("Client Network Stats",rect,0xFF0000AA);
+	pDefaultFont->RenderText("Client Network Stats", rect, 0xFF8888EE);
 	rect.top += 16;
 	rect.bottom += 16;
 
