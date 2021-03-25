@@ -45,7 +45,7 @@ int FormatChatBubbleText(char* szText, int iWidth, int iMaxWord)
 			}
 			else
 			{
-				strcpy(buf, szText + w);
+				strcpy_s(buf, szText + w);
 				szText[w + 1] = 0;
 				szText[w] = '\n';
 				memcpy(szText + strlen(szText), buf, strlen(buf) + 1);
