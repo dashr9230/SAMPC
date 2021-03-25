@@ -9,6 +9,8 @@
 
 #pragma once
 
+#include "../main.h"
+
 #define ENTITY_TYPE_UNKNOWN		0
 #define ENTITY_TYPE_PED			1
 #define ENTITY_TYPE_VEHICLE		2

@@ -494,7 +494,7 @@ int main (int argc, char** argv)
 		#endif
 
 		RakNet::Time now = RakNet::GetTime();
-		if (now - _timeCookieLastUpdated > iConnSeedTime)
+		if ((int)(now - _timeCookieLastUpdated) > iConnSeedTime)
 		{
 			_uiRndCookieChallenge = (unsigned int)rand();
 			_timeCookieLastUpdated = now;

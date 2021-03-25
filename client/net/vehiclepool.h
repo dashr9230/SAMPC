@@ -9,8 +9,6 @@
 
 #pragma once
 
-#define INVALID_VEHICLE_ID	0xFFFF
-
 typedef struct _VEHICLE_SPAWN_INFO
 {
 	int iVehicleType;

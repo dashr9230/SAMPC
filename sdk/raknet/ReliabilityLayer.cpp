@@ -1819,6 +1819,7 @@ InternalPacket* ReliabilityLayer::CreateInternalPacketFromBitStream( RakNet::Bit
 	if ( isSplitPacket )
 	{
 #ifdef SAMPSRV
+		void logprintf(char* format, ...);
 		logprintf("[warning] dropping a split packet from client");
 		internalPacketPool.ReleasePointer(internalPacket);
 		return 0;

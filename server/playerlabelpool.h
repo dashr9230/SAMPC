@@ -2,6 +2,21 @@
 #ifndef SAMPSRV_PLAYERLABELPOOL_H
 #define SAMPSRV_PLAYERLABELPOOL_H
 
+typedef struct
+{
+	char* szText;
+	WORD wLength;
+	DWORD dwColor;
+	float fX;
+	float fY;
+	float fZ;
+	float fDrawDistance;
+	bool bTestLOS;
+	int iVirtualWorld;
+	WORD wAttachedPlayerID;
+	WORD wAttachedVehicleID;
+} LABEL;
+
 class CPlayerLabelPool
 {
 private:
