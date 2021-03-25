@@ -284,12 +284,13 @@ LRESULT APIENTRY NewWndProc( HWND hwnd,UINT uMsg,
 
 //----------------------------------------------------
 
-void GetScreenshotFileName(std::string & FileName)
+int GetScreenshotFileName(std::string & FileName)
 {
     char Buf[MAX_PATH];
     WIN32_FIND_DATA ffd;
     HANDLE h;
-    for (int i = 0; i < 1000; i++)
+	int i;
+    for (i = 0; i < 1000; i++)
     {
 		sprintf_s(Buf, "%s\\screens\\sa-mp-%03i.jpg", szUserDocPath, i);
         h = FindFirstFile(Buf, &ffd);
@@ -301,6 +302,7 @@ void GetScreenshotFileName(std::string & FileName)
 		}
     }
     FileName = Buf;
+	return i;
 }
 
 //----------------------------------------------------

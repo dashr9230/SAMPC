@@ -13,7 +13,7 @@ D3DXMATRIX matView, matProj;
 void d3d9DestroyDeviceObjects();
 void d3d9RestoreDeviceObjects();
 
-void GetScreenshotFileName(std::string& FileName);
+int GetScreenshotFileName(std::string& FileName);
 extern BOOL g_bTakeScreenshot;
 
 void DoCheatDataStoring();
@@ -119,10 +119,10 @@ HRESULT __stdcall IDirect3DDevice9Hook::Present(CONST RECT* pSourceRect, CONST R
 		if (pD3DDevice->GetFrontBufferData(0, tpSurface) == D3D_OK)
 		{
 			std::string sFileName;
-			GetScreenshotFileName(sFileName);
+			int iImageNum = GetScreenshotFileName(sFileName);
 			D3DXSaveSurfaceToFile(sFileName.c_str(), D3DXIFF_JPG, tpSurface, NULL, NULL);
 
-			pChatWindow->AddInfoMessage("Screenshot Taken - %s", sFileName.c_str());
+			pChatWindow->AddInfoMessage("Screenshot Taken - sa-mp-%03i.jpg", iImageNum);
 		}
 		else
 			pChatWindow->AddDebugMessage("Unable to save screenshot.");
