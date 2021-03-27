@@ -67,6 +67,8 @@ private:
 		PCHAR szNick,DWORD dwTextColor,DWORD dwChatColor);
 
 	void ChatLog(PCHAR szTimeStamp, PCHAR szString, PCHAR szNick, eChatMessageType eType);
+	
+	void UpdateScrollBar();
 
 public:
 	void Draw();

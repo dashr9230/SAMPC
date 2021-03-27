@@ -68,6 +68,8 @@ CChatWindow::~CChatWindow() {}
 void CChatWindow::SetPageSize(unsigned int uiSize)
 {
 	m_uiPageSize = uiSize;
+
+	UpdateScrollBar();
 }
 
 void CChatWindow::ToggleTimeStamp()
@@ -80,36 +82,30 @@ void CChatWindow::ForceHide(bool bHide)
 	m_bForcedHidden = bHide;
 }
 
+void CChatWindow::UpdateScrollBar()
+{
+	if (m_pScrollBar)
+	{
+		m_pScrollBar->SetLocation(5, 40);
+		m_pScrollBar->SetSize(15, ((m_lFontSizeY + 1) * m_uiPageSize) - 60);
+		m_pScrollBar->SetTrackRange(0, (MAX_MESSAGES - m_uiPageSize) - 1);
+		m_pScrollBar->SetPageSize(5);
+		m_pScrollBar->ShowItem(MAX_MESSAGES - 1);
+	}
+}
+
 void CChatWindow::ResetDialogControls(CDXUTDialog *pGameUI)
 {
 	m_pGameUI = pGameUI;
 
 	if(pGameUI) {
-		//pGameUI->AddEditBox(IDC_CHATBACK,"",5,5,420,170,true,&m_pEditBackground);
 
 		m_pScrollBar = new CDXUTScrollBar(pGameUI);
 		pGameUI->AddControl(m_pScrollBar);
 		m_pScrollBar->SetVisible(true);
 		m_pScrollBar->SetEnabled(true);
-		m_pScrollBar->SetLocation(5,40);
-		m_pScrollBar->SetSize(15,((m_lFontSizeY+1)* m_uiPageSize)-60);
-		m_pScrollBar->SetTrackRange(0,(MAX_MESSAGES- m_uiPageSize)-1);
-		m_pScrollBar->SetPageSize(5);
-		m_pScrollBar->ShowItem(MAX_MESSAGES-1);
 
-		/*
-		m_pEditBackground->GetElement(0)->TextureColor.Init(D3DCOLOR_ARGB( 170, 20, 20, 20 ));
-		m_pEditBackground->GetElement(1)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditBackground->GetElement(2)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditBackground->GetElement(3)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditBackground->GetElement(4)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditBackground->GetElement(5)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditBackground->GetElement(6)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditBackground->GetElement(7)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditBackground->GetElement(8)->TextureColor.Init(D3DCOLOR_ARGB( 200, 0, 0, 0 ));
-		m_pEditBackground->SetEnabled(false);
-		m_pEditBackground->SetVisible(true);*/
-
+		UpdateScrollBar();
 	}
 }
 
