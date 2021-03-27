@@ -173,7 +173,7 @@ void CAudioStream::Process()
 		rect.right = pGame->GetScreenWidth();
 		rect.bottom = rect.top + 30;
 
-		pDefaultFont->RenderText(m_szLabel, rect, 0x99FFFFFF);
+		pDefaultFont->RenderSmallerText(0, m_szLabel, rect, DT_NOCLIP, 0x99FFFFFF, 0);
 	}
 }
 
