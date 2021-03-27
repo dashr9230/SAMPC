@@ -695,6 +695,9 @@ void CNetGame::Packet_NoFreeIncomingConnections(Packet* packet)
 void CNetGame::Packet_DisconnectionNotification(Packet* packet)
 {
 	pChatWindow->AddDebugMessage("Server closed the connection.");
+	
+	if (pAudioStream) pAudioStream->Stop();
+	
 	m_pRakClient->Disconnect(0);
 }
 
@@ -703,6 +706,9 @@ void CNetGame::Packet_DisconnectionNotification(Packet* packet)
 void CNetGame::Packet_ConnectionLost(Packet* packet)
 {
 	pChatWindow->AddDebugMessage("Lost connection to the server. Reconnecting..");
+	
+	if (pAudioStream) pAudioStream->Stop();
+	
 	ShutdownForGameModeRestart();
     SetGameState(GAMESTATE_WAIT_CONNECT);	
 }
