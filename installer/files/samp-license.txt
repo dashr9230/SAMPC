@@ -1,0 +1,92 @@
+------------------------------------------------------------------------------------
+
+The SA-MP modification for Grand Theft Auto: San Andreas (r) is a software project
+aimed at extending the functionality of the Grand Theft Auto: San Andreas (r)
+software for Microsoft Windows (r).
+
+------------------------------------------------------------------------------------
+
+SA-MP CLIENT AND SERVER SOFTWARE LICENSE AGREEMENT AND ATTRIBUTIONS
+
+
+---- LICENSE TERMS ----
+
+(a) You must have a valid license to use Grand Theft Auto: San Andreas (r) PC
+in order for this license to be valid.
+
+(b) The software contained herein is provided on an "as-is" basis without
+any form of warranty.
+
+(c) This software may not be exploited for personal, financial or 
+commercial gain.
+
+(d) The author(s) of this software accept no liability for use/misuse of the
+software.
+
+(e) The SA-MP software package may not be distributed, sold, rented or
+leased, without written permission of the software author(s).
+
+(f) You may not create or distribute derivative works of the software or files
+contained within the package.
+
+(g) You may not use this software for any illegal purposes.
+
+(h) The author(s) of this software retain the right to modify/revoke this license
+at any time under any conditions seen appropriate by the author(s).
+
+(i) Ideas expressed in this software by way of coding or configuration are
+property of SA-MP.com.
+
+
+------------------------------------------------------------------------------------
+
+(c) 2005-2011 SA-MP.com team.
+
+The SA-MP.com team is not affiliated with Rockstar Games, Rockstar North or 
+Take-Two Interactive Software Inc.
+
+Grand Theft Auto and Grand Theft Auto: San Andreas are registered trademarks of
+Take-Two Interactive Software Inc.
+
+------------------------------------------------------------------------------------
+
+
+---- ATTRIBUTIONS ----
+
+- This software makes use of the RakNet networking library (c) 2003 Kevin Jenkins
+- This software makes use of the Pawn language (c) ITB CompuPhase, 1997-2005
+- This software makes use of the BASS audio library (c) Un4seen Developments Ltd
+- This software makes use of the ttmath library (c) 2006-2009, Tomasz Sowa
+
+*** ttmath LIBRARY LICENSE ***
+
+ Copyright (c) 2006-2009, Tomasz Sowa
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+  
+    Redistributions of source code must retain the above copyright notice,
+     this list of conditions and the following disclaimer.
+     
+    Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in the
+     documentation and/or other materials provided with the distribution.
+     
+    Neither the name Tomasz Sowa nor the names of contributors to this
+     project may be used to endorse or promote products derived
+     from this software without specific prior written permission.
+ 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+  THE POSSIBILITY OF SUCH DAMAGE.
+
+------------------------------------------------------------------------------------
